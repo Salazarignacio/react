@@ -1,0 +1,10 @@
+.cart img {
+    width: 60px;
+}
+
+span {
+    background-color: red;
+    border: solid 7px red;
+    border-radius: 3px;
+    color: #ffff
+}
