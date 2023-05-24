@@ -3,8 +3,10 @@ import './CartWidget.css'
 function CartWidget ({cantidad}){
     return (
         <div className="cart">
-            <a href="#"><img src="https://pixlok.com/wp-content/uploads/2021/10/shopping-cart-osnmdfg.png" alt="cartLogo"/></a> 
+            <button type="button" className='btn btn-outline-warning'>
+                <i className="fa-solid fa-cart-shopping icon"></i>
             <span>{cantidad}</span>
+            </button> 
         </div>
     )
 }

@@ -2,19 +2,17 @@ import CartWidget from './CartWidget'
 import './NavBar.css'
 
 export default function NavBar (){
-    return (<div className="NavBar">
+    return (<header className="NavBar container-fluid">
          <div>
-            <img src="https://seeklogo.com/images/S/shopify-logo-826A5C40EC-seeklogo.com.png" alt="brand"/>
+         <button type="button" className='btn btn-outline-warning'><i className="fa-regular fa-futbol icon"></i></button>
          </div>
-         <div>
-            <ul>
-                <li><a href="#">Clickeable 1</a></li>
-                <li><a href="#">Clickeable 2</a></li>
-                <li><a href="#">Clickeable 3</a></li>
-            </ul>
+         <div className='categories'>
+            <button type="button" className='btn btn-outline-warning'>Clickeable 1</button>
+            <button type="button" className='btn btn-outline-warning'>Clickeable 2</button>
+            <button type="button" className='btn btn-outline-warning'>Clickeable 3</button>
          </div>
          <div>
             <CartWidget cantidad={7}/>
          </div>
-         </div>)
+         </header>)
 }
