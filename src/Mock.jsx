@@ -1,6 +1,6 @@
 const baseDatos = [
   {
-    id: 1,
+    id: "1",
     title: "SMART TV 50 PULGADAS 4K ULTRA HD MT50G22 - MOTOROLA",
     description: "TEL5002MOT",
     price: 239.999,
@@ -56,6 +56,15 @@ const baseDatos = [
   },
 ];
 
+export function mockDetail(par) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(baseDatos.find((a) => a.id == par));
+      reject("Error en Detail");
+    }, 2000);
+  });
+}
+
 export default function mock() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -64,3 +73,7 @@ export default function mock() {
     }, 2000);
   });
 }
+
+const prueba = baseDatos.find((a) => a.id == 1);
+console.log(prueba.category);
+mockDetail(2).then((data) => console.log(data)); /* <--aca me devulve el objeto esperado */
