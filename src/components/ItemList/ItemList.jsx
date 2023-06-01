@@ -1,21 +1,29 @@
-import Mock from "../../Mock";
+import mock from "../../Mock";
 import { useEffect, useState } from "react";
 import Item from "../Item/Item";
 
 function ItemList() {
-  const [pet, setPet] = useState([]);
+  const [request, setRequest] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Mock().then((data) => {
-      setPet(data);
-    });
+    mock().then((data) => {
+      setRequest(data);
+    })
+    .finally(()=>{
+      setLoading(false)
+    })
   }, []);
 
   return (
     <div>
       {" "}
-      {pet.map((a) => {
-        return <Item key={a.id} nombre={a.nombre} id={a.id}></Item>;
+      {loading?<div className="d-flex justify-content-center">
+  <div className="spinner-border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </div>
+</div>:request.map((a) => {
+        return <Item key={a.id} title={a.title} id={a.id} description={a.description} img={a.img}></Item>;
       })}
     </div>
   );

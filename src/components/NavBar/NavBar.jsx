@@ -11,13 +11,13 @@ export default function NavBar() {
       </div>
       <div className="categories">
         <button type="button" className="btn btn-outline-warning">
-          Clickeable 1
+          SmartTV
         </button>
         <button type="button" className="btn btn-outline-warning">
-          Clickeable 2
+          Notebooks 2
         </button>
         <button type="button" className="btn btn-outline-warning">
-          Clickeable 3
+          SmartWatch
         </button>
       </div>
       <div>

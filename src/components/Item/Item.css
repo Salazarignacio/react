@@ -1,0 +1,16 @@
+.Item img {
+    width: 300px;
+}
+
+.Item {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(122, 122, 122);
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    padding: 2rem;
+}
