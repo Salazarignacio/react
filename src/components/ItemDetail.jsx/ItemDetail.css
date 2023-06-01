@@ -1,3 +1,13 @@
 .ItemDetail{
-    background-color: red;
+    border: solid gray 2px;
+    display: flex;
+}
+
+.ItemDetail img {
+    width: 630px
+}
+
+.price {
+    font-weight: bold;
+    font-size: 50px;
 }

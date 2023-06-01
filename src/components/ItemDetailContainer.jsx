@@ -1,4 +1,4 @@
-import mockDetail from "../Mock";
+import {mockDetail} from "../Mock";
 import { useState, useEffect } from "react";
 import ItemDetail from "./ItemDetail.jsx/ItemDetail";
 
@@ -15,9 +15,11 @@ export default function ItemDetailContainer() {
   return (
     <>
       <ItemDetail
+        title={req.title}
+        img={req.img}
         description={req.description}
         id={req.id}
-        title={req.title}
+        price={req.price}
       ></ItemDetail>
     </>
   );
