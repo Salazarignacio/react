@@ -1,26 +1,53 @@
-import {mockDetail} from "../Mock";
-import { useState, useEffect } from "react";
+import { getDetail } from "../mock";
 import ItemDetail from "./ItemDetail.jsx/ItemDetail";
+import { useParams } from "react-router-dom";
+import useProducts from "./customHooks/customHook";
 
 export default function ItemDetailContainer() {
-  const [req, setReq] = useState({});/* <--Probe cambiar el valor incial */
+  const { userId } = useParams();
+  const { product, loading } = useProducts(() => getDetail(userId), userId);
+  /*   const [product, setProduct] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const {userId} = useParams()
 
   useEffect(() => {
-    mockDetail(2).then((data) => {
-        setReq(data);
-        console.log(data); /* Aca me devuelve el array completo! */
+    getDetail(userId).then((data) => {
+      setProduct(data);
+      setLoading(false)
     });
-  }, []);
+  }, [userId]); */
 
   return (
     <>
-      <ItemDetail
-        title={req.title}
-        img={req.img}
-        description={req.description}
-        id={req.id}
-        price={req.price}
-      ></ItemDetail>
+      {loading ? (
+        <div className="mh">
+          <div className="d-flex justify-content-center mb-2">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          <div
+            className="d-flex justify-content-center"
+            style={{ fontWeight: 600 }}
+          >
+            Loading
+          </div>
+        </div>
+      ) : (
+        <div className="mh">
+        <ItemDetail 
+          title={product.title}
+          img1={product.img.img1}
+          img2={product.img.img2}
+          img3={product.img.img3}
+          description={product.description}
+          id={product.id}
+          price={product.price}
+          stock={product.stock}
+        ></ItemDetail>
+        </div>
+      )}
     </>
   );
 }

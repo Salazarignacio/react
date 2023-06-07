@@ -1,19 +1,15 @@
-.cart img {
-    width: 60px;
-}
-
-span {
+.cartCant {
     position: absolute;
-    top: 50px;
-    right: 8px;
+    top: 34px;
+    right: 135px;
     padding: 0px 3px 0px 3px;
-    background-color: rgb(255, 190, 0);
-    border: solid 2px rgb(255, 190, 0);
+    background-color: red;
+    border: solid 2px red;
     border-radius: 4px;
-    color: black;
+    color: white;
     font-weight: 600;
 }
 
 .icon {
-    font-size: 38px;
+    font-size: 33px;
 }

@@ -25,7 +25,7 @@ function Counter({ stock, onAdd }) {
           <h3>Camisa</h3>
         </div>
 
-        <div className="mb-5">
+        <div>
           <p>Stock: {stock2}</p>
         </div>
 

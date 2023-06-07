@@ -1,13 +1,44 @@
-.ItemDetail{
-    border: solid gray 2px;
-    display: flex;
+.ItemDetail {
+  border: solid gray 2px;
+  display: flex;
+  background-color: pink;
+  height: 500px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 10px;
 }
 
-.ItemDetail img {
-    width: 630px
+.mh {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 
 .price {
-    font-weight: bold;
-    font-size: 50px;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.detailLeft {
+    width: 50%;
+    height: 100%;
+    background-color: orange;
+
+}
+.detailLeft img {
+    background-color: red;
+    width: 500px;
+}
+
+.detailRight {
+    width: 50%;
+    background-color: tan;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

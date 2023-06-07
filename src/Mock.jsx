@@ -6,7 +6,11 @@ const baseDatos = [
     price: 239.999,
     category: "tv",
     stock: 3,
-    img: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5002MOT.jpg",
+    img: {
+      img1: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5002MOT.jpg",
+      img2: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5063TCL.jpg",
+      img3: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5006PHI.jpg",
+    },
   },
   {
     id: 2,
@@ -16,7 +20,11 @@ const baseDatos = [
     price: 159.999,
     category: "tv",
     stock: 3,
-    img: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5080LGL.jpg",
+    img: {
+      img1: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5080LGL.jpg",
+      img2: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5063TCL.jpg",
+      img3: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5006PHI.jpg",
+    },
   },
   {
     id: 3,
@@ -25,7 +33,11 @@ const baseDatos = [
     price: 299.999,
     category: "notebook",
     stock: 3,
-    img: "https://www.megatone.net/Images/Articulos/zoom2x/200/04/NOT1751ASU.jpg",
+    img: {
+      img1: "https://www.megatone.net/Images/Articulos/zoom2x/200/04/NOT1751ASU.jpg",
+      img2: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5063TCL.jpg",
+      img3: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5006PHI.jpg",
+    },
   },
   {
     id: 4,
@@ -34,7 +46,11 @@ const baseDatos = [
     price: 489.999,
     category: "notebook",
     stock: 3,
-    img: "https://www.megatone.net/Images/Articulos/zoom2x/200/04/NOT5008LEN.jpg",
+    img: {
+      img1: "https://www.megatone.net/Images/Articulos/zoom2x/200/04/NOT5008LEN.jpg",
+      img2: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5063TCL.jpg",
+      img3: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5006PHI.jpg",
+    },
   },
   {
     id: 5,
@@ -43,7 +59,11 @@ const baseDatos = [
     price: 23.999,
     category: "watch",
     stock: 3,
-    img: "https://www.megatone.net/Images/Articulos/zoom2x/239/SWA0044SMA.jpg",
+    img: {
+      img1: "https://www.megatone.net/Images/Articulos/zoom2x/239/SWA0044SMA.jpg",
+      img2: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5063TCL.jpg",
+      img3: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5006PHI.jpg",
+    },
   },
   {
     id: 6,
@@ -51,12 +71,16 @@ const baseDatos = [
     description: "SWA0001KIW",
     price: 25.999,
     category: "watch",
-    stock: 3,
-    img: "https://www.megatone.net/Images/Articulos/zoom2x/239/SWA0001KIW.jpg",
+    stock: 5,
+    img: {
+      img1: "https://www.megatone.net/Images/Articulos/zoom2x/239/SWA0001KIW.jpg",
+      img2: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5063TCL.jpg",
+      img3: "https://www.megatone.net/Images/Articulos/zoom2x/253/TEL5006PHI.jpg",
+    },
   },
 ];
 
-export function mockDetail(par) {
+export function getDetail(par) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(baseDatos.find((a) => a.id == par));
@@ -64,8 +88,16 @@ export function mockDetail(par) {
     }, 2000);
   });
 }
+export function getCategory(par) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(baseDatos.filter((a) => a.category == par));
+      reject("Error en Category");
+    }, 2000);
+  });
+}
 
-export default function mock() {
+export default function getProducts() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(baseDatos);
@@ -73,7 +105,3 @@ export default function mock() {
     }, 2000);
   });
 }
-
-const prueba = baseDatos.find((a) => a.id == 1);
-console.log(prueba.category);
-mockDetail(2).then((data) => console.log(data)); /* <--aca me devulve el objeto esperado */
