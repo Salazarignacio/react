@@ -12,9 +12,9 @@ export default function ItemDetalle() {
   const [change, setChange] = useState("A");
 
   function cambio(){
-    let nacho
-    change=="A"? nacho="B":nacho="A"
-    setChange(nacho);
+    let component
+    change=="A"? component="B":component="A"
+    setChange(component);
   }
 
    const Count = change == "B" ? Button2 : Button1; 
