@@ -1,5 +1,17 @@
 import "./ItemDetail.css";
-import Counter from "../counter/Counter";
+import ItemCount from "../counter/ItemCount";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
+const Finalizada = ({ onAdd }) => {
+  /*poner un estado para la cantidad */
+
+  return (
+    <>
+      <h2>Compra Finalizada</h2>;<p>La cantidad es </p>
+    </>
+  );
+};
 
 export default function ItemDetail({
   id,
@@ -11,6 +23,16 @@ export default function ItemDetail({
   price,
   stock,
 }) {
+  const [change, setChange] = useState("B");
+  function cambio(par) {
+    let component;
+    change == "A" ? (component = "B") : (component = "A");
+    setChange(component);
+    console.log(par);
+    return par;
+  }
+  const Count = change == "B" ? ItemCount : Finalizada;
+
   return (
     <div key={id} className="ItemDetail container-md p-4">
       <div className="detailLeft">
@@ -57,7 +79,12 @@ export default function ItemDetail({
       <div className="detailRight">
         <p className="price">${price}</p>
         <p>{description}</p>
-        <Counter stock={stock} onAdd={() => console.log("hola")} />
+        <Count stock={stock} onAdd={cambio} />
+        <Link to="/cart">
+          <button type="button" className="btn btn-success">
+            Finalizar Compra
+          </button>
+        </Link>
       </div>
     </div>
   );

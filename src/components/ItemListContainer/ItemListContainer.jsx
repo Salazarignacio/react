@@ -1,6 +1,6 @@
 import useProducts from "../customHooks/customHook";
 import Item from "../Item/Item";
-import getProducts from "../../mock";
+import getProducts from "../../Mock";
 
 function ItemListContainer() {
   const { product, loading } = useProducts(() => getProducts());

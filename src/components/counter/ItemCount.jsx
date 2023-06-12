@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Counter.css";
 
-function Counter({ stock, onAdd }) {
+function ItemCount({ stock, onAdd }) {
   const [count, setCount] = useState(0);
   const [stock2, setStock2] = useState(stock);
 
@@ -34,6 +34,7 @@ function Counter({ stock, onAdd }) {
             type="button"
             className="btn btn-success"
             onClick={decrementar}
+            disabled={!count}
           >
             -
           </button>
@@ -42,6 +43,7 @@ function Counter({ stock, onAdd }) {
             type="button"
             className="btn btn-success"
             onClick={incrementar}
+            disabled={!stock2}
           >
             +
           </button>
@@ -49,16 +51,18 @@ function Counter({ stock, onAdd }) {
 
         <button
           type="button"
-          className="btn btn-success"
-          onClick={onAdd}
-          disabled={!stock2}
+          className="btn btn-success "
+          onClick={()=>onAdd(count)}
+          disabled={!count}
         >
           Agregar Carrito
         </button>
       </div>
+
+
       <div></div>
     </>
   );
 }
 
-export default Counter;
+export default ItemCount;

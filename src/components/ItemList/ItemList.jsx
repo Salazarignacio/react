@@ -1,23 +1,23 @@
-import { getCategory } from "../../mock";
+import getProducts from "../../Mock";
+import { getCategory } from "../../Mock";
 import Item from "../Item/Item";
 import { useParams } from "react-router-dom";
-import useProducts from "../customHooks/customHook";
+import { useEffect, useState } from "react";
 
 export default function ItemList() {
-  const { userCategory } = useParams();
-  const { product, loading } = useProducts(()=>getCategory(userCategory), userCategory);
-
-/*   const [product, setProduct] = useState({});
+  const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
 
-const { userCategory } = useParams();
+  const { userCategory } = useParams();
   useEffect(() => {
-    getCategory(userCategory).then((data) => {
+    setLoading(true);
+    const ternary = userCategory ? getCategory(userCategory) : getProducts();
+    ternary.then((data) => {
       setProduct(data);
       setLoading(false);
     });
   }, [userCategory]);
- */
+
   return (
     <div className="mh">
       {loading ? (
@@ -35,7 +35,6 @@ const { userCategory } = useParams();
           </div>
         </div>
       ) : (
-        
         product.map((a) => {
           return (
             <Item
@@ -46,7 +45,6 @@ const { userCategory } = useParams();
               img={a.img.img1}
               category={a.category}
             ></Item>
-
           );
         })
       )}

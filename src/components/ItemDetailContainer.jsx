@@ -1,22 +1,11 @@
-import { getDetail } from "../mock";
-import ItemDetail from "./ItemDetail.jsx/ItemDetail";
+import { getDetail } from "../Mock";
+import ItemDetail from "./ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import useProducts from "./customHooks/customHook";
 
 export default function ItemDetailContainer() {
   const { userId } = useParams();
   const { product, loading } = useProducts(() => getDetail(userId), userId);
-  /*   const [product, setProduct] = useState({});
-  const [loading, setLoading] = useState(true);
-
-  const {userId} = useParams()
-
-  useEffect(() => {
-    getDetail(userId).then((data) => {
-      setProduct(data);
-      setLoading(false)
-    });
-  }, [userId]); */
 
   return (
     <>
@@ -36,16 +25,16 @@ export default function ItemDetailContainer() {
         </div>
       ) : (
         <div className="mh">
-        <ItemDetail 
-          title={product.title}
-          img1={product.img.img1}
-          img2={product.img.img2}
-          img3={product.img.img3}
-          description={product.description}
-          id={product.id}
-          price={product.price}
-          stock={product.stock}
-        ></ItemDetail>
+          <ItemDetail
+            title={product.title}
+            img1={product.img.img1}
+            img2={product.img.img2}
+            img3={product.img.img3}
+            description={product.description}
+            id={product.id}
+            price={product.price}
+            stock={product.stock}
+          ></ItemDetail>
         </div>
       )}
     </>
