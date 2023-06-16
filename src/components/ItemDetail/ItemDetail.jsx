@@ -1,17 +1,12 @@
 import "./ItemDetail.css";
 import ItemCount from "../counter/ItemCount";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import Finalizada from "./Finalizada";
+import { useState, createContext } from "react";
+import { ThemeContext } from "../../App";
+import { useContext } from "react";
+import Carousel from "./Carousel";
 
-const Finalizada = ({ onAdd }) => {
-  /*poner un estado para la cantidad */
-
-  return (
-    <>
-      <h2>Compra Finalizada</h2>;<p>La cantidad es </p>
-    </>
-  );
-};
+export const ImgContext = createContext("imagenes");
 
 export default function ItemDetail({
   id,
@@ -23,68 +18,44 @@ export default function ItemDetail({
   price,
   stock,
 }) {
-  const [change, setChange] = useState("B");
+  const theme = useContext(ThemeContext);
+  const objImg = { img1, img2, img3 };
+
+  const handleOnAdd = (quantity) => {
+    const objProduct = {
+      id,
+      title,
+      price,
+      quantity,
+    };
+    addItem(objProduct);
+    cambio();
+  };
+
+  const [, addItem] = theme;
+
+  const [change, setChange] = useState(true);
   function cambio(par) {
     let component;
-    change == "A" ? (component = "B") : (component = "A");
+    change == false ? (component = true) : (component = false);
     setChange(component);
-    console.log(par);
     return par;
   }
-  const Count = change == "B" ? ItemCount : Finalizada;
+  const Count = change ? ItemCount : Finalizada;
 
   return (
     <div key={id} className="ItemDetail container-md p-4">
       <div className="detailLeft">
         <h3>{title}</h3>
-
-        <div id="carouselExampleFade" className="carousel slide carousel-fade">
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img src={img1} className="d-block " alt="..." />
-            </div>
-            <div className="carousel-item">
-              <img src={img2} className="d-block " alt="..." />
-            </div>
-            <div className="carousel-item">
-              <img src={img3} className="d-block " alt="..." />
-            </div>
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleFade"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleFade"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
+        <ImgContext.Provider value={objImg}>
+          <Carousel />
+        </ImgContext.Provider>
       </div>
       <div className="detailRight">
         <p className="price">${price}</p>
         <p>{description}</p>
-        <Count stock={stock} onAdd={cambio} />
-        <Link to="/cart">
-          <button type="button" className="btn btn-success">
-            Finalizar Compra
-          </button>
-        </Link>
+
+        <Count stock={stock} onAdd={handleOnAdd} />
       </div>
     </div>
   );

@@ -52,7 +52,7 @@ function ItemCount({ stock, onAdd }) {
         <button
           type="button"
           className="btn btn-success "
-          onClick={()=>onAdd(count)}
+          onClick={()=>onAdd(count)} /* <<--aca */
           disabled={!count}
         >
           Agregar Carrito

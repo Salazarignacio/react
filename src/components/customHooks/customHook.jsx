@@ -5,6 +5,7 @@ export const useProducts = (asyncFn, array=[]) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    !array.length==0&&setLoading(true);
     asyncFn()
       .then((data) => {
         setProduct(data);

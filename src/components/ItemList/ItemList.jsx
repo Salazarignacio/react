@@ -3,9 +3,18 @@ import { getCategory } from "../../Mock";
 import Item from "../Item/Item";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import useProducts from "../customHooks/customHook";
 
 export default function ItemList() {
-  const [product, setProduct] = useState({});
+  /* const {product, loading } = useProducts() */
+
+  const { userCategory } = useParams();
+
+  const { product, loading } = useProducts(
+    () => getCategory(userCategory),
+    userCategory
+  );
+  /*   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
 
   const { userCategory } = useParams();
@@ -16,7 +25,7 @@ export default function ItemList() {
       setProduct(data);
       setLoading(false);
     });
-  }, [userCategory]);
+  }, [userCategory]); */
 
   return (
     <div className="mh">

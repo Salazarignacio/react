@@ -1,30 +1,16 @@
 import { useState } from "react";
+import { ThemeContext } from "../App";
+import { useContext } from "react";
 
-const Button1 = ({funcion}) => {
-  return <button onClick={funcion}>Boton1</button>;
-};
 
-const Button2 = () => {
-  return <><label>Input</label><input/></>
-};
-
-export default function ItemDetalle() {
-  const [change, setChange] = useState("A");
-
-  function cambio(){
-    let component
-    change=="A"? component="B":component="A"
-    setChange(component);
-  }
-
-   const Count = change == "B" ? Button2 : Button1; 
-
-   const ff=()=>{console.log("Componente Agnostico")}
+export default function Practicas() {
+  const nacho = ThemeContext
+  const theme = useContext(ThemeContext);
   return (
     <div>
-      
-      <button onClick={cambio}>Cambiar Elemento</button>
-       <Count funcion={ff}/> 
+      <button onClick={()=>console.log(theme)}>Cambiar Elemento</button>
+      <button onClick={()=>console.log(nacho)}>Cambiar Elemento 2</button>
+       
     </div>
   );
 }
