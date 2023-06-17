@@ -27,6 +27,7 @@ export default function ItemDetail({
       title,
       price,
       quantity,
+      img1,
     };
     addItem(objProduct);
     cambio();

@@ -7,7 +7,7 @@ function ItemListContainer() {
 
   return (
     <div className="mh">
-      {loading ? (
+      {loading &&
         <div>
           <div className="d-flex justify-content-center mb-2">
             <div className="spinner-border" role="status">
@@ -20,9 +20,9 @@ function ItemListContainer() {
           >
             Loading
           </div>
-        </div>
-      ) : (
-        product.map((a) => {
+        </div>}
+      
+       { product.map((a) => {
           return (
             <Item
               key={a.id}
@@ -34,7 +34,7 @@ function ItemListContainer() {
             ></Item>
           );
         })
-      )}
+  }
     </div>
   );
 }

@@ -10,10 +10,15 @@ import { useState, createContext } from "react";
 export const ThemeContext = createContext("fuera de contexto");
 function App() {
   const [cart, setCart] = useState([]);
-
   const addItem = (prod) => {
-    setCart((prev) => [...prev, prod]);
+    if(!isInCart(prod.id)){
+    setCart((prev) => [...prev, prod])}
+    else console.log("ya esta cargado")
   };
+
+  const isInCart = (id) => {
+    return cart.some(prod => prod.id === id)
+}
 
   return (
     <>
