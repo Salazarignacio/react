@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./Counter.css";
 
-function ItemCount({ stock, onAdd }) {
-  const [count, setCount] = useState(0);
+function ItemCount({ stock, onAdd, quantity }) {
+  const [count, setCount] = useState(quantity); /*<<-- aca no es 0 */
   const [stock2, setStock2] = useState(stock);
 
   function incrementar() {

@@ -11,14 +11,27 @@ export const ThemeContext = createContext("fuera de contexto");
 function App() {
   const [cart, setCart] = useState([]);
   const addItem = (prod) => {
-    if(!isInCart(prod.id)){
-    setCart((prev) => [...prev, prod])}
-    else console.log("ya esta cargado")
+    if (!isInCart(prod.id)) {
+      setCart((prev) => [...prev, prod]);
+    } else {
+      const searchProduct = cart.find((a) => a.id === prod.id);
+      console.log(searchProduct);
+      const ubication = cart.indexOf(searchProduct);
+      console.log(cart[ubication].quantity);
+      cart[ubication].quantity += prod.quantity;
+    }
   };
 
   const isInCart = (id) => {
-    return cart.some(prod => prod.id === id)
-}
+    return cart.some((prod) => prod.id === id);
+  };
+
+/*   const quant = (id) => {
+    const searchProduct = cart.find((a) => a.id === id);
+    const ubication = cart.indexOf(searchProduct);
+    console.log(cart[ubication].quantity);
+    cart[ubication].quantity += 100;
+  }; */
 
   return (
     <>

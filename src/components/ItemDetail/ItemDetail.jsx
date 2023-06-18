@@ -27,16 +27,16 @@ export default function ItemDetail({
       title,
       price,
       quantity,
-      img1,
+      img1
     };
     addItem(objProduct);
-    cambio();
+    changeComponent();
   };
 
   const [, addItem] = theme;
 
   const [change, setChange] = useState(true);
-  function cambio(par) {
+  function changeComponent(par) {
     let component;
     change == false ? (component = true) : (component = false);
     setChange(component);
@@ -56,7 +56,7 @@ export default function ItemDetail({
         <p className="price">${price}</p>
         <p>{description}</p>
 
-        <Count stock={stock} onAdd={handleOnAdd} />
+        <Count stock={stock} onAdd={handleOnAdd} quantity={0} />
       </div>
     </div>
   );
