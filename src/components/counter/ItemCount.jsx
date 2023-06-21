@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Counter.css";
 
-function ItemCount({ stock, onAdd, quantity }) {
+function ItemCount({ price, stock, onAdd, quantity }) {
   const [count, setCount] = useState(quantity); /*<<-- aca no es 0 */
   const [stock2, setStock2] = useState(stock);
 
@@ -22,7 +22,7 @@ function ItemCount({ stock, onAdd, quantity }) {
     <>
       <div className="Counter">
         <div>
-          <h3>Camisa</h3>
+          <h3>$ {price}</h3>
         </div>
 
         <div>
@@ -36,7 +36,7 @@ function ItemCount({ stock, onAdd, quantity }) {
             onClick={decrementar}
             disabled={!count}
           >
-            -
+          <i className="fa-solid fa-caret-left"></i>
           </button>
           <h4>{count}</h4>
           <button
@@ -45,7 +45,7 @@ function ItemCount({ stock, onAdd, quantity }) {
             onClick={incrementar}
             disabled={!stock2}
           >
-            +
+            <i className="fa-solid fa-caret-right"></i>
           </button>
         </div>
 
@@ -55,7 +55,7 @@ function ItemCount({ stock, onAdd, quantity }) {
           onClick={()=>onAdd(count)} /* <<--aca */
           disabled={!count}
         >
-          Agregar Carrito
+          Agregar al Carrito
         </button>
       </div>
 

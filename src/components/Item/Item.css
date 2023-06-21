@@ -3,12 +3,14 @@
 }
 
 .Item {
+    background-color: white;
     width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(122, 122, 122);
+    /* border: 2px solid rgb(140, 202, 173); */
+    
     border-radius: 20px;
     margin: 0 auto;
     margin-bottom: 1rem;

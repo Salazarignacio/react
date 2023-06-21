@@ -4,6 +4,11 @@
   font-family: sans-serif;
 }
 
+#root {
+  background-color: rgb(230, 230, 230) ;
+  min-height: 100vh;
+}
+
 .active button {
   background-color: white;
 }
@@ -13,7 +18,7 @@
 }
 
 .bColor {
-  background-color: rgba(136, 136, 136, 0.829);
+  background-color: rgba(0, 0, 0, 0.637);
   position: sticky;
   top: 0px;
   

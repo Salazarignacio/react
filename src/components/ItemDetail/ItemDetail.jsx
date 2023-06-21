@@ -45,18 +45,18 @@ export default function ItemDetail({
   const Count = change ? ItemCount : Finalizada;
 
   return (
-    <div key={id} className="ItemDetail container-md p-4">
+    <div key={id} className="ItemDetail p-2">
       <div className="detailLeft">
-        <h3>{title}</h3>
         <ImgContext.Provider value={objImg}>
           <Carousel />
         </ImgContext.Provider>
       </div>
       <div className="detailRight">
-        <p className="price">${price}</p>
-        <p>{description}</p>
+        <h3>{title}</h3>
+        
+        {/* <p>{description}</p> */}
 
-        <Count stock={stock} onAdd={handleOnAdd} quantity={0} />
+        <Count price={price} title={title} stock={stock} onAdd={handleOnAdd} quantity={0} />
       </div>
     </div>
   );

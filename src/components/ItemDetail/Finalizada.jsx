@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
-const Finalizada = () => {
+const Finalizada = ({title}) => {
     return (
-      <>
-        <h2>Compra Finalizada</h2>;
+      <div className="detailRight">
+        {/* <p>{title}</p> */}
+        <h2>Compra Finalizada</h2>
         <Link to="/cart">
           <button
             type="button"
@@ -12,7 +13,7 @@ const Finalizada = () => {
             Finalizar Compra
           </button>
         </Link>
-      </>
+      </div>
     );
   };
 
