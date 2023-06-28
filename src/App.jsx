@@ -4,7 +4,6 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import NavBar from "./components/NavBar/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./components/Cart/Cart";
-
 import { useState, createContext } from "react";
 
 export const ThemeContext = createContext("fuera de contexto");
@@ -13,11 +12,13 @@ function App() {
   const addItem = (prod) => {
     if (!isInCart(prod.id)) {
       setCart((prev) => [...prev, prod]);
+
+      prod.stock = prod.stock - prod.quantity;
     } else {
       const searchProduct = cart.find((a) => a.id === prod.id);
-      console.log(searchProduct);
+
       const ubication = cart.indexOf(searchProduct);
-      console.log(cart[ubication].quantity);
+      /* console.log(cart[ubication].quantity); */
       cart[ubication].quantity += prod.quantity;
     }
   };
@@ -26,7 +27,7 @@ function App() {
     return cart.some((prod) => prod.id === id);
   };
 
-/*   const quant = (id) => {
+  /*   const quant = (id) => {
     const searchProduct = cart.find((a) => a.id === id);
     const ubication = cart.indexOf(searchProduct);
     console.log(cart[ubication].quantity);
@@ -39,7 +40,7 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Routes>
-            <Route exact path="/" element={<ItemListContainer />} />
+            <Route exact path="/" element={<ItemList />} />
             <Route exact path="/cart" element={<Cart />} />
             <Route exact path="category/:userCategory" element={<ItemList />} />
             <Route

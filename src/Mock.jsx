@@ -1,7 +1,7 @@
 const baseDatos = [
   {
     id: "1",
-    title: "SMART TV 50 4K ULTRA HD - MOTOROLA",
+    title: "SA SA SABORRRRR",
     description: "TEL5002MOT",
     price: 239.999,
     category: "tv",

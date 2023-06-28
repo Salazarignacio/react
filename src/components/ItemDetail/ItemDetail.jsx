@@ -18,8 +18,10 @@ export default function ItemDetail({
   price,
   stock,
 }) {
+  
   const theme = useContext(ThemeContext);
   const objImg = { img1, img2, img3 };
+  
 
   const handleOnAdd = (quantity) => {
     const objProduct = {
@@ -27,8 +29,10 @@ export default function ItemDetail({
       title,
       price,
       quantity,
-      img1
+      stock,
+      img1,
     };
+
     addItem(objProduct);
     changeComponent();
   };
@@ -45,7 +49,7 @@ export default function ItemDetail({
   const Count = change ? ItemCount : Finalizada;
 
   return (
-    <div key={id} className="ItemDetail p-2">
+    <div key={id} className="ItemDetail p-5">
       <div className="detailLeft">
         <ImgContext.Provider value={objImg}>
           <Carousel />
@@ -56,7 +60,13 @@ export default function ItemDetail({
         
         {/* <p>{description}</p> */}
 
-        <Count price={price} title={title} stock={stock} onAdd={handleOnAdd} quantity={0} />
+        <Count
+          price={price}
+          title={title}
+          stock={stock}
+          onAdd={handleOnAdd}
+          quantity={1}
+        />
       </div>
     </div>
   );

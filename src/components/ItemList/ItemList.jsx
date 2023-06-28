@@ -1,31 +1,43 @@
-import getProducts from "../../Mock";
-import { getCategory } from "../../Mock";
 import Item from "../Item/Item";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import useProducts from "../customHooks/customHook";
+
+import { getDocs, collection, query, where } from 'firebase/firestore'
+import { baseDatos } from "../../firebase/firebaseConfig";
+
+
 
 export default function ItemList() {
-  /* const {product, loading } = useProducts() */
 
-  const { userCategory } = useParams();
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const { product, loading } = useProducts(
-    () => getCategory(userCategory),
-    userCategory
-  );
-  /*   const [product, setProduct] = useState({});
-  const [loading, setLoading] = useState(true);
+  const { userCategory} = useParams();
 
-  const { userCategory } = useParams();
+
+
   useEffect(() => {
-    setLoading(true);
-    const ternary = userCategory ? getCategory(userCategory) : getProducts();
-    ternary.then((data) => {
-      setProduct(data);
-      setLoading(false);
-    });
-  }, [userCategory]); */
+    const productsRef = !userCategory 
+        ? collection(baseDatos, 'baseDatos')
+        : query(collection(baseDatos, 'baseDatos'), where('category', '==', userCategory))
+
+    setLoading(true)
+    getDocs(productsRef) 
+        .then(querySnapshot =>{
+            const productsAdapted = querySnapshot.docs.map(doc => {
+                const fields = doc.data()
+                return { id: doc.id, ...fields }
+            }) 
+            
+            setProducts(productsAdapted)
+        })
+        .finally(() => {
+            setLoading(false)
+        })
+        
+
+}, [userCategory])
+
 
   return (
     <div className="mh">
@@ -44,7 +56,7 @@ export default function ItemList() {
           </div>
         </div>
       ) : (
-        product.map((a) => {
+        products.map((a) => {
           return (
             <Item
               key={a.id}

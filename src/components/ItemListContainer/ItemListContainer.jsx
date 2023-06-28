@@ -1,9 +1,9 @@
-import useProducts from "../customHooks/customHook";
 import Item from "../Item/Item";
-import getProducts from "../../Mock";
+import {useEffect, useState} from 'react'
 
 function ItemListContainer() {
-  const { product, loading } = useProducts(() => getProducts());
+const [loading, setLoading] = useEffect(true)
+const [product, setProduct] = useEffect([])
 
   return (
     <div className="mh">
