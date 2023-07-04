@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { ThemeContext } from "../../App";
 import CartView from "../CartView/CartView";
 
@@ -29,8 +30,10 @@ function Cart() {
               price={a.price}
               fn={del}
             ></CartView>
+            
           );
         })}
+<Link to={"/cart/checkout"}><button className="btn btn-primary">Checkout</button></Link>
       </div>
     </div>
   );
