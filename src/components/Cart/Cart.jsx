@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../../App";
+import { ThemeContext } from "../../CartContext/CartContext";
 import CartView from "../CartView/CartView";
 
 function Cart() {
-    const [state, setState] = useState(true)
+  const [state, setState] = useState(true);
   const theme = useContext(ThemeContext);
   const data = theme[0];
 
@@ -12,7 +12,7 @@ function Cart() {
     let busqueda = data.map((el) => el.id).indexOf(id);
     data.splice(busqueda, 1);
     console.log(data);
-    setState(!state)
+    setState(!state);
   };
 
   return (
@@ -30,10 +30,11 @@ function Cart() {
               price={a.price}
               fn={del}
             ></CartView>
-            
           );
         })}
-<Link to={"/cart/checkout"}><button className="btn btn-primary">Checkout</button></Link>
+        <Link to={"/cart/checkout"}>
+          <button className="btn btn-primary">Checkout</button>
+        </Link>
       </div>
     </div>
   );

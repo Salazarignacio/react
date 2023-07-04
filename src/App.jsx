@@ -7,43 +7,18 @@ import Cart from "./components/Cart/Cart";
 import { useState, createContext } from "react";
 import Checkout from "./components/Checkout/Checkout";
 import CheckoutContainer from "./components/CheckoutContainer/CheckoutContainer";
+import { ThemeContext } from "./CartContext/CartContext";
+import CartContext from "./CartContext/CartContext";
 
-export const ThemeContext = createContext("");
+
 function App() {
-  const [cart, setCart] = useState([]);
 
-  const finalizePurchase = () => setCart({});
   
-  const addItem = (prod) => {
-    if(prod!= undefined) {
-    if (!isInCart(prod.id)) {
-      setCart((prev) => [...prev, prod]);
-
-      prod.stock = prod.stock - prod.quantity;
-    } else {
-      const searchProduct = cart.find((a) => a.id === prod.id);
-
-      const ubication = cart.indexOf(searchProduct);
-      /* console.log(cart[ubication].quantity); */
-      cart[ubication].quantity += prod.quantity;
-    }}
-  };
-
-  const isInCart = (id) => {
-    return cart.some((a) => a.id === id);
-  };
-
-  /*   const quant = (id) => {
-    const searchProduct = cart.find((a) => a.id === id);
-    const ubication = cart.indexOf(searchProduct);
-    console.log(cart[ubication].quantity);
-    cart[ubication].quantity += 100;
-  }; */
 
   return (
     <>
-      <ThemeContext.Provider value={[cart, addItem, isInCart, finalizePurchase]}>
         <BrowserRouter>
+      <CartContext>
           <NavBar />
           <Routes>
             <Route exact path="/" element={<ItemList />} />
@@ -60,8 +35,8 @@ function App() {
               element={<ItemDetailContainer />}
             />
           </Routes>
+      </CartContext>
         </BrowserRouter>
-      </ThemeContext.Provider>
     </>
   );
 }

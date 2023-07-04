@@ -10,7 +10,7 @@ import {
   
 } from "firebase/firestore";
 import { useState, useContext } from "react";
-import { ThemeContext } from "../../App";
+import { ThemeContext } from "../../CartContext/CartContext";
 import Checkout from "../Checkout/Checkout";
 import { baseDatos } from "../../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 const CheckoutContainer = () => {
   const [orderId, setOrderId] = useState(false);
   const theme = useContext(ThemeContext);
-  const [cart, finalizePurchase] = theme;
+  const [cart] = theme;
 
   const navigate = useNavigate()
   const sendOrder = async () => {

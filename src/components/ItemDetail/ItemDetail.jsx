@@ -2,7 +2,7 @@ import "./ItemDetail.css";
 import ItemCount from "../counter/ItemCount";
 import Finalizada from "./Finalizada";
 import { useState, createContext } from "react";
-import { ThemeContext } from "../../App";
+import { ThemeContext } from "../../CartContext/CartContext";
 import { useContext } from "react";
 import Carousel from "./Carousel";
 

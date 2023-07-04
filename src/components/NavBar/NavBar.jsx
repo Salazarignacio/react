@@ -2,7 +2,7 @@ import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { ThemeContext } from "../../App";
+import { ThemeContext } from "../../CartContext/CartContext";
 
 export default function NavBar() {
   const theme = useContext(ThemeContext);
