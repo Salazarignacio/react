@@ -56,12 +56,12 @@ outOfStock.push({id: a.id, ...fieldsDoc})
     if (outOfStock.length === 0){
       batch.commit()
 
-      const orderRef = collection(baseDatos, 'orders')
+      const orderRef = collection(baseDatos, 'ordersCart')
 
       const {id} = await addDoc(orderRef, order)
       setOrderId(id)
       cart.splice(0, cart.length)
-      navigate('/')
+      /* navigate('/') */
     } else alert ("no hay stock suficiente")
   
   } catch(error){
@@ -71,8 +71,10 @@ outOfStock.push({id: a.id, ...fieldsDoc})
 
   return (
     <>
-      {orderId ? (
+      {orderId ? (<div>
         <h3>Su orden de pédido es {orderId}</h3>
+        <button className='btn btn-success' onClick={(()=>navigate('/'))}>Volver al menú principal</button>
+        </div>
       ) : (
         <Checkout funcion={sendOrder}></Checkout>
       )

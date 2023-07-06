@@ -35,9 +35,13 @@ export default function ItemDetail({
 
     addItem(objProduct);
     changeComponent();
+    
   };
 
   const [, addItem] = theme;
+  
+  
+  
 
   const [change, setChange] = useState(true);
   function changeComponent(par) {
@@ -68,6 +72,7 @@ export default function ItemDetail({
           quantity={1}
         />
       </div>
+
     </div>
   );
 }

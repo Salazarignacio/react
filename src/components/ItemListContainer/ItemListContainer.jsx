@@ -1,9 +1,8 @@
-import ItemList from '../ItemList/ItemList';
-import {useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom';
-import { getDocs, collection, query, where } from 'firebase/firestore';
-import { baseDatos } from '../../firebase/firebaseConfig';
-
+import ItemList from "../ItemList/ItemList";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getDocs, collection, query, where } from "firebase/firestore";
+import { baseDatos } from "../../firebase/firebaseConfig";
 
 function ItemListContainer() {
   const [products, setProducts] = useState([]);
@@ -36,8 +35,8 @@ function ItemListContainer() {
 
   return (
     <div className="mh">
-      {loading &&
-        <div>
+
+      {loading&&<div className="mh">
           <div className="d-flex justify-content-center mb-2">
             <div className="spinner-border" role="status">
               <span className="visually-hidden">Loading...</span>
@@ -51,19 +50,7 @@ function ItemListContainer() {
           </div>
         </div>}
       
-       { product.map((a) => {
-          return (
-            <Item
-              key={a.id}
-              title={a.title}
-              id={a.id}
-              description={a.description}
-              category={a.category}
-              img={a.img.img1}
-            ></Item>
-          );
-        })
-  }
+      <ItemList data={products}></ItemList>
     </div>
   );
 }
