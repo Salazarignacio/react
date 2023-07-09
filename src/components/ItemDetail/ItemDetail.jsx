@@ -67,9 +67,10 @@ export default function ItemDetail({
         <Count
           price={price}
           title={title}
-          stock={stock}
+          stock={stock<=0?"Producto sin stock":stock}
           onAdd={handleOnAdd}
-          quantity={1}
+          quantity={stock>0?1:"-"}
+          
         />
       </div>
 

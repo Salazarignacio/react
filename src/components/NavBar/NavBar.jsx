@@ -6,7 +6,10 @@ import { ThemeContext } from "../../CartContext/CartContext";
 
 export default function NavBar() {
   const theme = useContext(ThemeContext);
-  const data = theme[0];
+  
+  const totalQuantity = theme[3]
+
+
   return (
     <header className=" container-fluid bColor">
       <div className="NavBar container-sm ">
@@ -40,7 +43,7 @@ export default function NavBar() {
         </div>
         <div>
           <NavLink to={"cart"}>
-            <CartWidget cantidad={data.length} />
+            <CartWidget cantidad={totalQuantity} />
           </NavLink>
         </div>
       </div>

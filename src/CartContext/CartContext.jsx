@@ -18,17 +18,7 @@ function CartContext({ children }) {
 
   const totalQuantity = getTotalQuantity();
 
-  const getTotal = () => {
-    let total = 0;
-
-    cart.forEach((prod) => {
-      total += prod.quantity * prod.price;
-    });
-
-    return total;
-  };
-
-  const total = getTotal();
+  
 
   /* ---------------------------------------------------------------------------------- */
 
@@ -52,7 +42,7 @@ function CartContext({ children }) {
   return (
     <>
       <ThemeContext.Provider
-        value={[cart, addItem, isInCart, totalQuantity, total]}
+        value={[cart, addItem, isInCart, totalQuantity]}
       >
         {children}
       </ThemeContext.Provider>

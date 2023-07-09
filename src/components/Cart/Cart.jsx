@@ -4,26 +4,34 @@ import { ThemeContext } from "../../CartContext/CartContext";
 import CartView from "../CartView/CartView";
 
 function Cart() {
-  const [total2, setTotal2] = useState(0);
   const [state, setState] = useState(true);
   const theme = useContext(ThemeContext);
-  const data = theme[0];
-
+  const cart = theme[0];
   
-  const total = theme[4]; /* funcion del total "getTotal" */
+
+  const getTotal = () => {
+    let total = 0;
+
+    cart.forEach((prod) => {
+      total += prod.quantity * prod.price;
+    });
+
+    return total;
+  };
+
+  const total = getTotal();
 
   const del = (id) => {
-    let busqueda = data.map((el) => el.id).indexOf(id);
-    data.splice(busqueda, 1);
+    let busqueda = cart.map((el) => el.id).indexOf(id);
+    cart.splice(busqueda, 1);
     setState(!state);
-    setTotal2(total)
   };
 
   return (
     <div>
-      {data.length < 1 && <h1>El carrito esta vacío</h1>}
+      {cart.length < 1 && <h1>El carrito esta vacío</h1>}
       <div>
-        {data.map((a) => {
+        {cart.map((a) => {
           return (
             <CartView
               key={a.id}
@@ -33,12 +41,11 @@ function Cart() {
               img1={a.img1}
               price={a.price}
               fn={del}
-              
             ></CartView>
-            
           );
         })}
-        total2 {total2} total {total}
+        {total}
+
         <Link to={"/cart/checkout"}>
           <button className="btn btn-primary">Checkout</button>
         </Link>
