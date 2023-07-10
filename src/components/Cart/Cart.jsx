@@ -4,7 +4,7 @@ import { ThemeContext } from "../../CartContext/CartContext";
 import CartView from "../CartView/CartView";
 
 function Cart() {
-  const [state, setState] = useState(true);
+  
   const theme = useContext(ThemeContext);
   const cart = theme[0];
   
@@ -20,12 +20,9 @@ function Cart() {
   };
 
   const total = getTotal();
-
-  const del = (id) => {
-    let busqueda = cart.map((el) => el.id).indexOf(id);
-    cart.splice(busqueda, 1);
-    setState(!state);
-  };
+  
+  const [,,,,,del] = theme
+  console.log(del)
 
   return (
     <div>

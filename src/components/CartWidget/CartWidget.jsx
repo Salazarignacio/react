@@ -4,12 +4,13 @@ import { useContext } from "react";
 
 function CartWidget() {
   const theme = useContext(ThemeContext);
-  const [,,,totalQuantity] = theme
+  const [,,,total] = theme
+  console.log(total)
   return (
     <div className="cart">
       <button type="button" className="btn btn-outline-light">
         <i className="fa-solid fa-cart-shopping icon"></i>
-        <span className="cartCant">{totalQuantity}</span>
+        <span className="cartCant">{total}</span>
       </button>
     </div>
   );
