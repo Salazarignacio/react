@@ -1,4 +1,5 @@
-import './Checkout.css'
+import "./Checkout.css";
+import { useState } from "react";
 
 function Checkout({
   funcion,
@@ -10,19 +11,36 @@ function Checkout({
   setPhone,
   setMail,
 }) {
-  function validation(e){
-    e.preventDefault()
-    const idMail = document.getElementById("mail")
-    const idMail2 = document.getElementById("mail2")
-    if(idMail.value == idMail2.value){
-      funcion()
-    } else alert("Revisar la confirmacion Email")
+  const [valid, setValid] = useState(false)
+  const idMail = document.getElementById("mail");
+  const idMail2 = document.getElementById("mail2");
+  const idName = document.getElementById("name");
+  const idPhone = document.getElementById("phone");
+  function chequeo(){
+    if (
+      idMail.value == idMail2.value &&
+      idName.value.length > 1 &&
+      idPhone.value.length > 1
+    ) {
+       setValid(true); 
+    } else if (idMail.value != idMail2.value) {
+      alert("Revisar la confirmacion Email");
+    } else if (idName.value.length < 3) {
+      alert("Ingresar un nombre mayor a 3 caracteres");
+    } else if (idPhone.value.length < 3){
+      alert("Ingrese un nro de teléfono valido")
+    }
+  }
+  function validation(e) {
+    e.preventDefault();
+    funcion()
+    
   }
 
   return (
     <>
-    <h3>Ingrese sus datos para poder registrar la orden</h3>
-      <form className='Checkout' onSubmit={funcion2}>
+      <h3>Ingrese sus datos para poder registrar la orden</h3>
+      <form className="Checkout" onSubmit={funcion2}>
         <label>Nombre</label>
         <input
           type="name"
@@ -51,11 +69,11 @@ function Checkout({
           }}
         />
         <label>Confrimar e-mail</label>
-        <input
-        type="email" id="mail2"/>
-      <button className="btn btn-success" onClick={(e)=>validation(e)}>
-        Generar orden de compra
-      </button>
+        <input type="email" id="mail2" />
+        <button onClick={chequeo} className="btn btn-success">Chequeo</button>
+        <button className="btn btn-success" disabled={!valid} onClick={(e) => validation(e)}>
+          Generar orden de compra
+        </button>
       </form>
     </>
   );
