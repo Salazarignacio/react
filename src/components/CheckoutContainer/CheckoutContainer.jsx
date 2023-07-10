@@ -30,8 +30,8 @@ const CheckoutContainer = () => {
   const [orderId, setOrderId] = useState(false);
   const theme = useContext(ThemeContext);
   const [cart] = theme;
-  const [, , , ,  total] = theme;
-  console.log(total)
+  const [, , , , total] = theme;
+  
 
   const navigate = useNavigate();
   const sendOrder = async () => {
@@ -43,6 +43,8 @@ const CheckoutContainer = () => {
       },
       items: cart,
       total: total,
+      estado: "orden generada",
+      fecha: new Date()
     };
     /* hacer loading */
     try {
@@ -79,7 +81,8 @@ const CheckoutContainer = () => {
 
         const { id } = await addDoc(orderRef, order);
         setOrderId(id);
-        cart.splice(0, cart.length);
+
+        cart.splice(0);
       } else alert("no hay stock suficiente");
     } catch (error) {
       console.error(error);
@@ -91,7 +94,7 @@ const CheckoutContainer = () => {
       {orderId ? (
         <div>
           <h3>Su orden de pédido es {orderId}</h3>
-          <button className="btn btn-success" onClick={() => navigate("/")}>
+          <button className="btn btn-success" onClick={() => {navigate("/"); location. reload(); }}>
             Volver al menú principal
           </button>
         </div>

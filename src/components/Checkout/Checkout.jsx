@@ -10,7 +10,8 @@ function Checkout({
   setPhone,
   setMail,
 }) {
-  function validation(){
+  function validation(e){
+    e.preventDefault()
     const idMail = document.getElementById("mail")
     const idMail2 = document.getElementById("mail2")
     if(idMail.value == idMail2.value){
@@ -52,10 +53,10 @@ function Checkout({
         <label>Confrimar e-mail</label>
         <input
         type="email" id="mail2"/>
-      </form>
-      <button className="btn btn-success" onClick={validation}>
+      <button className="btn btn-success" onClick={(e)=>validation(e)}>
         Generar orden de compra
       </button>
+      </form>
     </>
   );
 }

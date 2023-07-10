@@ -11,6 +11,7 @@ function Cart() {
   return (
     <div>
       {cart.length < 1 && <h1>El carrito esta vacío</h1>}
+      {cart.length < 1 && total}
       <div>
         {cart.map((a) => {
           return (
