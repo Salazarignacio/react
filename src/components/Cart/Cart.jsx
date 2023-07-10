@@ -4,26 +4,10 @@ import { ThemeContext } from "../../CartContext/CartContext";
 import CartView from "../CartView/CartView";
 
 function Cart() {
-  
   const theme = useContext(ThemeContext);
   const cart = theme[0];
-  
-
-  const getTotal = () => {
-    let total = 0;
-
-    cart.forEach((prod) => {
-      total += prod.quantity * prod.price;
-    });
-
-    return total;
-  };
-
-  const total = getTotal();
-  
-  const [,,,,,del] = theme
-  console.log(del)
-
+  const [, , , , , del] = theme;
+  const [, , , , total] = theme;
   return (
     <div>
       {cart.length < 1 && <h1>El carrito esta vacío</h1>}

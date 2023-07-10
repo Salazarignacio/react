@@ -13,24 +13,25 @@ import Checkout from "../Checkout/Checkout";
 import { baseDatos } from "../../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 
-
 const CheckoutContainer = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState(0);
   const [mail, setMail] = useState("");
-  
+
   function createUser() {
     const objUser = {
       name,
       phone,
       mail,
     };
-  
+
     return objUser;
   }
   const [orderId, setOrderId] = useState(false);
   const theme = useContext(ThemeContext);
   const [cart] = theme;
+  const [, , , ,  total] = theme;
+  console.log(total)
 
   const navigate = useNavigate();
   const sendOrder = async () => {
@@ -38,10 +39,10 @@ const CheckoutContainer = () => {
       buyer: {
         name: name,
         phone: phone,
-        email: mail
-      }, // esto de saca del input
+        email: mail,
+      },
       items: cart,
-      total: "un monton de plata",
+      total: total,
     };
     /* hacer loading */
     try {
@@ -74,12 +75,11 @@ const CheckoutContainer = () => {
       if (outOfStock.length === 0) {
         batch.commit();
 
-        const orderRef = collection(baseDatos, "ordersCart");
+        const orderRef = collection(baseDatos, "orders");
 
         const { id } = await addDoc(orderRef, order);
         setOrderId(id);
         cart.splice(0, cart.length);
-        
       } else alert("no hay stock suficiente");
     } catch (error) {
       console.error(error);

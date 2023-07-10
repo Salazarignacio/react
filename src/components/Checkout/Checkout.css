@@ -1,0 +1,16 @@
+.Checkout {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.Checkout input {
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    border: 2px solid white;
+    width: 400px;
+    margin-bottom: 14px;
+}

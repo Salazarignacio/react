@@ -18,10 +18,8 @@ export default function ItemDetail({
   price,
   stock,
 }) {
-  
   const theme = useContext(ThemeContext);
   const objImg = { img1, img2, img3 };
-  
 
   const handleOnAdd = (quantity) => {
     const objProduct = {
@@ -35,13 +33,9 @@ export default function ItemDetail({
 
     addItem(objProduct);
     changeComponent();
-    
   };
 
   const [, addItem] = theme;
-  
-  
-  
 
   const [change, setChange] = useState(true);
   function changeComponent(par) {
@@ -61,19 +55,17 @@ export default function ItemDetail({
       </div>
       <div className="detailRight">
         <h3>{title}</h3>
-        
-        {/* <p>{description}</p> */}
+
+        <p>{description}</p>
 
         <Count
           price={price}
           title={title}
-          stock={stock<=0?"Producto sin stock":stock}
+          stock={stock <= 0 ? "Producto sin stock" : stock}
           onAdd={handleOnAdd}
-          quantity={stock>0?1:"-"}
-          
+          quantity={stock > 0 ? 1 : "-"}
         />
       </div>
-
     </div>
   );
 }

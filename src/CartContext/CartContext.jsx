@@ -63,7 +63,7 @@ function CartContext({ children }) {
   return (
     <>
       <ThemeContext.Provider
-        value={[cart, addItem, isInCart, totalQuantity, total, del, ]}
+        value={[cart, addItem, isInCart, totalQuantity, total, del ]}
       >
         {children}
       </ThemeContext.Provider>
