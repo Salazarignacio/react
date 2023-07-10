@@ -1,15 +1,8 @@
 import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
-import { ThemeContext } from "../../CartContext/CartContext";
 
 export default function NavBar() {
-  const theme = useContext(ThemeContext);
-  
-  const totalQuantity = theme[3]
-
-
   return (
     <header className=" container-fluid bColor">
       <div className="NavBar container-sm ">
@@ -43,7 +36,7 @@ export default function NavBar() {
         </div>
         <div>
           <NavLink to={"cart"}>
-            <CartWidget cantidad={totalQuantity} />
+            <CartWidget />
           </NavLink>
         </div>
       </div>
