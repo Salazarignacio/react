@@ -16,7 +16,8 @@ function Checkout({
   const idMail2 = document.getElementById("mail2");
   const idName = document.getElementById("name");
   const idPhone = document.getElementById("phone");
-  function chequeo(){
+  function chequeo(e){
+    e.preventDefault();
     if (
       idMail.value == idMail2.value &&
       idName.value.length > 1 &&
@@ -70,7 +71,7 @@ function Checkout({
         />
         <label>Confrimar e-mail</label>
         <input type="email" id="mail2" />
-        <button onClick={chequeo} className="btn btn-success">Chequeo</button>
+        <button onClick={(e)=>{chequeo(e)}} className="btn btn-success">Chequeo</button>
         <button className="btn btn-success" disabled={!valid} onClick={(e) => validation(e)}>
           Generar orden de compra
         </button>

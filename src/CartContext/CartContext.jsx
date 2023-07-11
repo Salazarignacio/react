@@ -41,7 +41,7 @@ function CartContext({ children }) {
   
 
   /* ---------------------------------------------------------------------------------- */
-
+ const clearCart =()=>{cart.splice(0); setState(!state);}; 
   const addItem = (prod) => {
     if (!isInCart(prod.id)) {
       setCart((prev) => [...prev, prod]);
@@ -63,7 +63,7 @@ function CartContext({ children }) {
   return (
     <>
       <ThemeContext.Provider
-        value={[cart, addItem, isInCart, totalQuantity, total, del ]}
+        value={[cart, addItem, isInCart, totalQuantity, total, del, clearCart ]}
       >
         {children}
       </ThemeContext.Provider>

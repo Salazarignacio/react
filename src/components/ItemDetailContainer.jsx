@@ -3,6 +3,7 @@ import ItemDetail from "./ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import { baseDatos } from "../firebase/firebaseConfig";
 import { getDoc, doc } from "firebase/firestore";
+import Loading from "./Loading/Loading";
 
 export default function ItemDetailContainer() {
   const [loading, setLoading] = useState(true);
@@ -23,35 +24,24 @@ export default function ItemDetailContainer() {
   }, [userId]);
   return (
     <>
-      {loading ? (
-        <div className="mh">
-          <div className="d-flex justify-content-center mb-2">
-            <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div>
-          <div
-            className="d-flex justify-content-center"
-            style={{ fontWeight: 600 }}
-          >
-            Loading
-          </div>
-        </div>
-      ) : (
-        <div className="mh">
-          
-          <ItemDetail
-            title={product.title}
-            img1={product.img ? product.img.img1: "https://c.tenor.com/Tu0MCmJ4TJUAAAAC/load-loading.gif"}
-            img2={product.img && product.img.img2}
-            img3={product.img && product.img.img3}
-            description={product.description}
-            id={product.id}
-            price={product.price}
-            stock={product.stock}
-          ></ItemDetail>
-        </div>
-      )}
+      {loading && <Loading />}
+
+      <div className="mh">
+        <ItemDetail
+          title={product.title}
+          img1={
+            product.img
+              ? product.img.img1
+              : "https://c.tenor.com/Tu0MCmJ4TJUAAAAC/load-loading.gif"
+          }
+          img2={product.img && product.img.img2}
+          img3={product.img && product.img.img3}
+          description={product.description}
+          id={product.id}
+          price={product.price}
+          stock={product.stock}
+        ></ItemDetail>
+      </div>
     </>
   );
 }

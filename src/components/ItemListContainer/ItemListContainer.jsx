@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { baseDatos } from "../../firebase/firebaseConfig";
+import Loading from "../Loading/Loading";
 
 function ItemListContainer() {
   const [products, setProducts] = useState([]);
@@ -35,21 +36,10 @@ function ItemListContainer() {
 
   return (
     <div className="mh">
+      {loading && 
+        <Loading/>
+      }
 
-      {loading&&<div className="mh">
-          <div className="d-flex justify-content-center mb-2">
-            <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div>
-          <div
-            className="d-flex justify-content-center"
-            style={{ fontWeight: 600 }}
-          >
-            Loading
-          </div>
-        </div>}
-      
       <ItemList data={products}></ItemList>
     </div>
   );
