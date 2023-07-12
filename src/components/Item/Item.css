@@ -16,3 +16,21 @@
     margin-bottom: 1rem;
     
 }
+
+
+.btn-modern {
+    padding: .6rem 1rem;
+    font-size: .9rem;
+    border: solid 1px transparent;
+    border-radius: 30px;
+    
+    transition: all 0.2s ease;
+}
+
+.btn-modern:hover {
+    transform: translateY(-3px);
+    background-color: rgb(229, 255, 0);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+

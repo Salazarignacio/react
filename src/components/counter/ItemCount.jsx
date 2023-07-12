@@ -20,7 +20,7 @@ function ItemCount({ price, stock, onAdd, quantity }) {
 
   return (
     <>
-      <div className="Counter">
+      <div className="Counter p-3">
         <div>
           <h3>$ {price}</h3>
         </div>
@@ -32,7 +32,7 @@ function ItemCount({ price, stock, onAdd, quantity }) {
         <div className="buttons mb-2">
           <button
             type="button"
-            className="btn btn-success"
+            className="btn-modern"
             onClick={decrementar}
             disabled={!count}
           >
@@ -41,7 +41,7 @@ function ItemCount({ price, stock, onAdd, quantity }) {
           <h4>{count}</h4>
           <button
             type="button"
-            className="btn btn-success"
+            className="btn-modern"
             onClick={incrementar}
             disabled={stock2=="Producto sin stock"}
           >
@@ -51,7 +51,7 @@ function ItemCount({ price, stock, onAdd, quantity }) {
 
         <button
           type="button"
-          className="btn btn-success "
+          className="btn-modern "
           onClick={()=>onAdd(count)} 
           disabled={!count}
         >

@@ -1,5 +1,5 @@
 .cartCant {
-    position: absolute;
+    position:  absolute;
     top: 34px;
     right: 135px;
     padding: 0px 3px 0px 3px;
@@ -13,3 +13,4 @@
 .icon {
     font-size: 33px;
 }
+

@@ -8,7 +8,7 @@ const Finalizada = ({title}) => {
         <Link to="/cart">
           <button
             type="button"
-            className="btn btn-success"
+            className="btn-modern"
           >
             Finalizar Compra
           </button>

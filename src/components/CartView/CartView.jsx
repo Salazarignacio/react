@@ -19,6 +19,7 @@ function CartView({ id, title, img1, price, quantity, fn, subtotal }) {
         </button>
       </div>
     </div>
+    
   );
 }
 

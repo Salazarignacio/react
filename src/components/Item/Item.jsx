@@ -9,7 +9,7 @@ function Item({ id, title, img, description, category }) {
       <p>{description}</p>
 
       <Link to={`/item/${id}`}>
-        <button className="btn btn-primary" type="button">
+        <button className="btn-modern" type="button">
           Ver Info
         </button>
       </Link>

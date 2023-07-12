@@ -12,7 +12,7 @@ function Cart() {
     <div>
       {cart.length < 1 && <h1>El carrito esta vacío</h1>}
       
-      <div>
+      <div className="mh">
         {cart.map((a) => {
           return (
             <CartView
@@ -26,10 +26,10 @@ function Cart() {
             ></CartView>
           );
         })}
-        <h3>${total}</h3>
+        <h3 style={total<1?{display: "none"}:{display:"block"}}>${total}</h3>
 
         <Link disabled={total<1} to={"/cart/checkout"}>
-          <button className="btn btn-primary" style={total<1?{display: "none"}:{display:"block"}}>Confirmar Compra</button>
+          <button className="btn-modern" style={total<1?{display: "none"}:{display:"block"}}>Confirmar Compra</button>
         </Link>
       </div>
     </div>

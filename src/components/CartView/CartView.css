@@ -18,3 +18,8 @@
 .cartview:first-child {
   margin-top: 30px;
 }
+
+.itemCart {
+  display: flex;
+  justify-content: start;
+}

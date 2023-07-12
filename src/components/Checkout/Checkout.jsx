@@ -26,8 +26,8 @@ function Checkout({
   }
 
   return (
-    <>
-      <h3>Ingrese sus datos para poder registrar la orden</h3>
+    <div className="mh ">
+      <h3 className="mb-5">Ingrese sus datos para finalizar la orden</h3>
       <form className="Checkout" onSubmit={funcion2}>
         <label>Nombre</label>
         <input
@@ -68,14 +68,14 @@ function Checkout({
         />
 
         <button
-          className="btn btn-success"
+          className="btn-modern"
           disabled={!valid}
           onClick={(e) => validation(e)}
         >
           Finalizar compra
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

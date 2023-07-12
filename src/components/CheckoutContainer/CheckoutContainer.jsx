@@ -96,7 +96,7 @@ const CheckoutContainer = () => {
         <div>
           <h3>Su orden de pédido es {orderId}</h3>
           <button
-            className="btn btn-success"
+            className="btn-modern"
             onClick={() => {
               navigate("/");
             }}
