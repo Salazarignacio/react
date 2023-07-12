@@ -7,35 +7,22 @@ function Checkout({
   name,
   phone,
   mail,
+  mail2,
   setName,
   setPhone,
   setMail,
+  setMail2,
 }) {
-  const [valid, setValid] = useState(false)
-  const idMail = document.getElementById("mail");
-  const idMail2 = document.getElementById("mail2");
-  const idName = document.getElementById("name");
-  const idPhone = document.getElementById("phone");
-  function chequeo(e){
-    e.preventDefault();
-    if (
-      idMail.value == idMail2.value &&
-      idName.value.length > 1 &&
-      idPhone.value.length > 1
-    ) {
-       setValid(true); 
-    } else if (idMail.value != idMail2.value) {
-      alert("Revisar la confirmacion Email");
-    } else if (idName.value.length < 3) {
-      alert("Ingresar un nombre mayor a 3 caracteres");
-    } else if (idPhone.value.length < 3){
-      alert("Ingrese un nro de teléfono valido")
-    }
+  const [valid, setValid] = useState(false);
+
+  function check(e) {
+     if (mail == mail2) {
+      setValid(true);
+    } else setValid(false); /* poner notificacion que dure poquito */
   }
   function validation(e) {
     e.preventDefault();
-    funcion()
-    
+    funcion();
   }
 
   return (
@@ -44,11 +31,12 @@ function Checkout({
       <form className="Checkout" onSubmit={funcion2}>
         <label>Nombre</label>
         <input
-          type="name"
+          type="text"
           value={name}
           onChange={(e) => {
             setName(e.target.value);
           }}
+          
           id="name"
         />
         <label>Teléfono</label>
@@ -68,12 +56,23 @@ function Checkout({
           onChange={(e) => {
             setMail(e.target.value);
           }}
+          onBlur={() => check()}
         />
         <label>Confrimar e-mail</label>
-        <input type="email" id="mail2" />
-        <button onClick={(e)=>{chequeo(e)}} className="btn btn-success">Chequeo</button>
-        <button className="btn btn-success" disabled={!valid} onClick={(e) => validation(e)}>
-          Generar orden de compra
+        <input
+          type="email"
+          id="mail2"
+          value={mail2}
+          onChange={(e) => setMail2(e.target.value)}
+          onBlur={() => check()}
+        />
+
+        <button
+          className="btn btn-success"
+          disabled={!valid}
+          onClick={(e) => validation(e)}
+        >
+          Finalizar compra
         </button>
       </form>
     </>

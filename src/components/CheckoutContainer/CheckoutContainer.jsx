@@ -17,6 +17,7 @@ const CheckoutContainer = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState(0);
   const [mail, setMail] = useState("");
+  const [mail2, setMail2] = useState("");
 
   function createUser() {
     const objUser = {
@@ -81,7 +82,7 @@ const CheckoutContainer = () => {
         const orderRef = collection(baseDatos, "orders");
 
         const { id } = await addDoc(orderRef, order);
-        clearCart(); /* pner funcion importada del context */
+        clearCart(); 
         setOrderId(id);
       } else alert("no hay stock suficiente");
     } catch (error) {
@@ -112,7 +113,9 @@ const CheckoutContainer = () => {
           phone={phone}
           setPhone={setPhone}
           mail={mail}
+          mail2={mail2}
           setMail={setMail}
+          setMail2={setMail2}
         ></Checkout>
       )}
     </>
