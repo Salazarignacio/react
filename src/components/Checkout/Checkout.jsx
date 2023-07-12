@@ -16,7 +16,7 @@ function Checkout({
   const [valid, setValid] = useState(false);
 
   function check(e) {
-     if (mail == mail2) {
+     if (mail == mail2 && mail.length > 0) {
       setValid(true);
     } else setValid(false); /* poner notificacion que dure poquito */
   }

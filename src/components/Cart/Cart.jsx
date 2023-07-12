@@ -26,10 +26,10 @@ function Cart() {
             ></CartView>
           );
         })}
-        {total}
+        <h3>${total}</h3>
 
-        <Link to={"/cart/checkout"}>
-          <button className="btn btn-primary">Checkout</button>
+        <Link disabled={total<1} to={"/cart/checkout"}>
+          <button className="btn btn-primary" style={total<1?{display: "none"}:{display:"block"}}>Confirmar Compra</button>
         </Link>
       </div>
     </div>
