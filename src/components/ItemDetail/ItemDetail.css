@@ -6,7 +6,8 @@
   align-items: center;
   flex-wrap: wrap;
   border-radius: 10px;
-  min-width: 750px
+  min-width: 750px;
+  gap: 30px
 }
 
 .mh {

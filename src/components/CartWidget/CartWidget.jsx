@@ -4,8 +4,8 @@ import { useContext } from "react";
 
 function CartWidget() {
   const theme = useContext(ThemeContext);
-  const [,,,total] = theme
-  console.log(total)
+  const [, , , total] = theme;
+
   return (
     <div className="cart">
       <button type="button" className="btn btn-outline-light">

@@ -14,8 +14,8 @@ function CartView({ id, title, img1, price, quantity, fn, subtotal }) {
         <p style={{ fontWeight: "bold" }}>${price}</p>
       </div>
       <div className="col-md-2">
-        <button onClick={() => fn(id)} className="btn btn-danger">
-          <i className="fa-solid fa-xmark"></i>{" "}
+        <button onClick={() => fn(id)} className="btn-delete">
+          <i className="fa-solid fa-xmark"></i>
         </button>
       </div>
     </div>

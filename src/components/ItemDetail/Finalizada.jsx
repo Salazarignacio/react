@@ -4,7 +4,7 @@ const Finalizada = ({title}) => {
     return (
       <div className="detailRight">
         {/* <p>{title}</p> */}
-        <h2>Compra Finalizada</h2>
+        <h2 className="mb-5">Compra Finalizada</h2>
         <Link to="/cart">
           <button
             type="button"
