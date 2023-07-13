@@ -14,12 +14,24 @@ function Checkout({
   setMail2,
 }) {
   const [valid, setValid] = useState(false);
+  const [error, setError] = useState(false);
 
   function check(e) {
-     if (mail == mail2 && mail.length > 0) {
-      setValid(true);
-    } else setValid(false); /* poner notificacion que dure poquito */
+    if (mail != mail2) {
+      setError(true);
+    } else if (
+      mail == mail2 &&
+      mail.length > 0 &&
+      name.length > 0 &&
+      phone.length > 0
+    ) {
+      setValid(true); setError(false)
+    } else {
+      setValid(false);
+      setError(false);
+    }
   }
+
   function validation(e) {
     e.preventDefault();
     funcion();
@@ -29,14 +41,19 @@ function Checkout({
     <div className="mh ">
       <h3 className="mb-5">Ingrese sus datos para finalizar la orden</h3>
       <form className="Checkout" onSubmit={funcion2}>
-        <label>Nombre</label>
+        <label className="mb-2">Nombre y Apellido</label>
         <input
           type="text"
           value={name}
+          style={
+            name.length > 0
+              ? { backgroundColor: "white" }
+              : { display: "block" }
+          }
           onChange={(e) => {
             setName(e.target.value);
           }}
-          
+          onBlur={() => check()}
           id="name"
         />
         <label>Teléfono</label>
@@ -44,15 +61,26 @@ function Checkout({
           type="number"
           id="phone"
           value={phone}
+          style={
+            phone.length > 0
+              ? { backgroundColor: "white" }
+              : { display: "block" }
+          }
           onChange={(e) => {
             setPhone(e.target.value);
           }}
+          onBlur={() => check()}
         />
         <label>E-mail</label>
         <input
           type="email"
           id="mail"
           value={mail}
+          style={
+            mail.length && mail.includes("@") > 0
+              ? { backgroundColor: "white" }
+              : { display: "block" }
+          }
           onChange={(e) => {
             setMail(e.target.value);
           }}
@@ -63,6 +91,11 @@ function Checkout({
           type="email"
           id="mail2"
           value={mail2}
+          style={
+            mail2.length > 0 && mail2 == mail && mail2.includes("@")
+              ? { backgroundColor: "white" }
+              : { display: "block" }
+          }
           onChange={(e) => setMail2(e.target.value)}
           onBlur={() => check()}
         />
@@ -75,6 +108,7 @@ function Checkout({
           Finalizar compra
         </button>
       </form>
+      {error && <p>El e-mail no coincide con la confirmación</p>}
     </div>
   );
 }

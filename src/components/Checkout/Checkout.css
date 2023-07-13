@@ -8,9 +8,13 @@
 
 .Checkout input {
     border: none;
-    padding: 5px;
-    border-radius: 4px;
+    padding:  .4rem;
+    padding-left: 25px;
+    border-radius: 40px;
     border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.411);
+    font-size: 20px;
     width: 400px;
     margin-bottom: 14px;
 }
+
