@@ -5,12 +5,18 @@ import { baseDatos } from "../firebase/firebaseConfig";
 import { getDoc, doc } from "firebase/firestore";
 import Loading from "./Loading/Loading";
 
+
+
 export default function ItemDetailContainer() {
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState([]);
 
   const { userId } = useParams();
-
+const notFound=()=>{
+  setTimeout(()=>{
+    return(<h1>No se encuentra el producto</h1>)
+  },2000)
+}
   useEffect(() => {
     const productRef = doc(baseDatos, "baseDatos", userId);
     setLoading(true);
@@ -25,8 +31,7 @@ export default function ItemDetailContainer() {
   return (
     <>
       {loading && <Loading />}
-{product.title?
-      <div className="mh">
+      {product.id && !product.title?<h1>No se encontro el producto</h1>:<div className="mh">
         <ItemDetail
           title={product.title}
           img1={
@@ -41,7 +46,10 @@ export default function ItemDetailContainer() {
           price={product.price}
           stock={product.stock}
         ></ItemDetail>
-      </div>:<h1>No se encuentra el producto</h1>}
+      </div>}
+      
+   
+
     </>
   );
 }
