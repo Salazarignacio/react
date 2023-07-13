@@ -16,11 +16,10 @@ function Checkout({
   const [valid, setValid] = useState(false);
   const [error, setError] = useState(false);
 
-  function check(e) {
+  function check() {
     if (mail != mail2) {
       setError(true);
     } else if (
-      mail == mail2 &&
       mail.length > 0 &&
       name.length > 0 &&
       phone.length > 0
