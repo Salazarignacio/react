@@ -47,7 +47,7 @@ export default function ItemDetail({
   const Count = change ? ItemCount : Finalizada;
 
   return (
-    <div key={id} className="ItemDetail p-5 ">
+    <div key={id} className="ItemDetail p-5">
       <div className="detailLeft ">
         <ImgContext.Provider value={objImg}>
           <Carousel />

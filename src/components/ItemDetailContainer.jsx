@@ -25,7 +25,7 @@ export default function ItemDetailContainer() {
   return (
     <>
       {loading && <Loading />}
-
+{product.title?
       <div className="mh">
         <ItemDetail
           title={product.title}
@@ -41,7 +41,7 @@ export default function ItemDetailContainer() {
           price={product.price}
           stock={product.stock}
         ></ItemDetail>
-      </div>
+      </div>:<h1>No se encuentra el producto</h1>}
     </>
   );
 }
