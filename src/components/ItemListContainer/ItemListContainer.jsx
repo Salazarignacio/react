@@ -12,8 +12,6 @@ function ItemListContainer() {
   const { userCategory } = useParams();
 
   useEffect(() => {
-    console.log(!userCategory);
-    console.log(userCategory);
     const productsRef = !userCategory
       ? collection(baseDatos, "baseDatos")
       : query(

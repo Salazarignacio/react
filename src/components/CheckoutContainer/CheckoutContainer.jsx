@@ -93,7 +93,7 @@ const CheckoutContainer = () => {
   return (
     <>
       {orderId ? (
-        <div>
+        <div className="mh">
           <h3>Su orden de pédido es {orderId}</h3>
           <button
             className="btn-modern"

@@ -17,6 +17,7 @@ function ItemCount({ price, stock, onAdd, quantity }) {
       setStock2(stock2 + 1);
     }
   }
+  
 
   return (
     <>
@@ -34,7 +35,7 @@ function ItemCount({ price, stock, onAdd, quantity }) {
             type="button"
             className="btn-modern"
             onClick={decrementar}
-            disabled={!count}
+            disabled={count<=1 ||  stock2=="Producto sin stock"}
           >
           <i className="fa-solid fa-caret-left"></i>
           </button>
@@ -53,7 +54,7 @@ function ItemCount({ price, stock, onAdd, quantity }) {
           type="button"
           className="btn-modern "
           onClick={()=>onAdd(count)} 
-          disabled={!count}
+          disabled={stock2=="Producto sin stock"}
         >
           Agregar al Carrito
         </button>

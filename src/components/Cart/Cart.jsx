@@ -10,7 +10,7 @@ function Cart() {
   const [, , , , total] = theme;
   return (
     <div>
-      {cart.length < 1 && <h1>El carrito esta vacío</h1>}
+      {cart.length < 1 && <h1 className="mh"> <i className="fa-solid fa-cart-shopping"></i>El carrito esta vacío </h1>}
       
       <div className="mh">
         {cart.map((a) => {
@@ -29,7 +29,7 @@ function Cart() {
         <h3 style={total<1?{display: "none"}:{display:"block"}}>${total}</h3>
 
         <Link disabled={total<1} to={"/cart/checkout"}>
-          <button className="btn-modern" style={total<1?{display: "none"}:{textDecoration: "none"}}>Confirmar Compra</button>
+          <button className="btn-modern" style={total<1?{display: "none"}:{textDecoration: "none"}}>Confirmar Compra </button>
         </Link>
       </div>
     </div>
