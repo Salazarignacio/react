@@ -3,10 +3,19 @@
 ## Instalación
 
 ```
+git clone https://github.com/Salazarignacio/react
 cd react
 npm install
 npm run dev
 ```
+
+## Hecho usando
+
+- React
+- Vercel
+- Bootstrap
+- Firebase
+
 
 ## Paso a paso 
 

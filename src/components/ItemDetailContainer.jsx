@@ -31,7 +31,7 @@ const notFound=()=>{
   return (
     <>
       {loading && <Loading />}
-      {product.id && !product.title?<h1>No se encontro el producto</h1>:<div className="mh">
+      {product.id && !product.title?<h1 className="mh">No se encontro el producto</h1>:<div className="mh">
         <ItemDetail
           title={product.title}
           img1={

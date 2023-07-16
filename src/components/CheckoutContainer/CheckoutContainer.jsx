@@ -18,6 +18,7 @@ const CheckoutContainer = () => {
   const [phone, setPhone] = useState(0);
   const [mail, setMail] = useState("");
   const [mail2, setMail2] = useState("");
+  const [orderId, setOrderId] = useState(false);
 
   function createUser() {
     const objUser = {
@@ -29,7 +30,6 @@ const CheckoutContainer = () => {
     return objUser;
   }
 
-  const [orderId, setOrderId] = useState(false);
   const theme = useContext(ThemeContext);
   const [cart] = theme;
   const [, , , , total] = theme;

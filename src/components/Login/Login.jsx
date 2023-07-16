@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Login.css'
 
 export default function Login (){
@@ -19,7 +20,10 @@ if(user.length>1 && pass.length>1 ){setError(false); navigate("/")}else {setErro
                 <input type="text" value={user} onChange={e=>setUser(e.target.value)}/>
                 <label className="mb-2">Contraseña</label>
                 <input type="password" className="mb-4" value={pass} onChange={e=>setPass(e.target.value)}/>
-                <button className="btn-modern ">Iniciar Sesion</button>
+                <div>
+                <button className="btn-modern mb-4">Iniciar Sesion</button>
+                <Link to={"/newuser"}><button className="btn-modern ">Crear Usuario</button></Link>
+                </div>
             </form>
             {error && <p>Campos incompletos</p>}
         </div>

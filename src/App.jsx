@@ -10,6 +10,7 @@ import Login from "./components/Login/Login";
 import CheckoutContainer from "./components/CheckoutContainer/CheckoutContainer";
 
 import CartContext from "./CartContext/CartContext";
+import SignUpContainer from "./components/SignUpContainer/SignUpContainer";
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
       <CartContext>
           <NavBar />
           <Routes>
-            <Route exact path="login" element={<Login/>}/>
+            <Route exact path="/login" element={<Login/>}/>
+            <Route exact path="/newuser" element={<SignUpContainer/>}/>
             <Route exact path="/" element={<ItemListContainer />} />
             <Route exact path="/cart" element={<Cart />} />
             <Route exact path="category/:userCategory" element={<ItemListContainer />} />
