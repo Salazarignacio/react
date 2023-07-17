@@ -24,7 +24,7 @@ export default function SignUp({user, pass, setUser, setPass, fn, fn2}) {
           value={pass}
           onChange={(e) => setPass(e.target.value)}
         />
-        <button onClick={()=>handleSubmit(e)} className="btn-modern ">Registrarse</button>
+        <button onClick={(e)=>handleSubmit(e)} className="btn-modern ">Registrarse</button>
       </form>
     </div>
   );

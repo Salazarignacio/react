@@ -18,3 +18,33 @@
     margin-bottom: 14px;
 }
 
+.divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.divider-right {
+    margin-left: 1rem;
+    margin-right: 2rem;
+    width: 100%;
+    border-bottom: 0.5px solid rgb(122, 122, 122); 
+}
+
+.divider-left {
+    margin-left: 2rem;
+    margin-right: 1rem;
+    width: 100%;
+    border-bottom: 0.5px solid rgb(122, 122, 122); 
+}
+
+.divider-center {
+    color:  rgb(122, 122, 122);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: pink;
+}

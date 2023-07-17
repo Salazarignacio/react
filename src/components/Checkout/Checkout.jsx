@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Checkout.css";
 import { useState } from "react";
 
@@ -19,12 +20,9 @@ function Checkout({
   function check() {
     if (mail != mail2) {
       setError(true);
-    } else if (
-      mail.length > 0 &&
-      name.length > 0 &&
-      phone.length > 0
-    ) {
-      setValid(true); setError(false)
+    } else if (mail.length > 0 && name.length > 0 && phone.length > 0) {
+      setValid(true);
+      setError(false);
     } else {
       setValid(false);
       setError(false);
@@ -38,7 +36,10 @@ function Checkout({
 
   return (
     <div className="mh ">
-      <h3 className="mb-5">Ingrese sus datos para finalizar la orden <i className="fa-solid fa-cart-shopping"></i></h3>
+      <h3 className="mb-5">
+        Ingrese sus datos para finalizar la orden{" "}
+        <i className="fa-solid fa-cart-shopping"></i>
+      </h3>
       <form className="Checkout" onSubmit={fn2}>
         <label className="mb-2">Nombre y Apellido</label>
         <input
@@ -106,6 +107,14 @@ function Checkout({
         >
           Finalizar compra
         </button>
+        <div className="divider">
+        <div className="divider-right mb-4"></div>
+        <div className="divider-center">O</div>
+        <div className="divider-left mb-4"></div>
+        </div>
+        <Link to={"/login"}>
+          <button className="btn-modern">Iniciar Sesion</button>
+        </Link>
       </form>
       {error && <p>El e-mail no coincide con la confirmación</p>}
     </div>

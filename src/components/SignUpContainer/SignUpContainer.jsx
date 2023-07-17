@@ -36,18 +36,26 @@ const userRef = collection(baseDatos, "users");
 
    addDoc(userRef, info).then(({id})=>setUserId(id)) /* devuelve el id de la orden  */
 
-   navigate("/")
+    navigate("/") 
 
   };
   return (<>
-  <SignUp
+   <SignUp
   user={user}
   pass={pass}
   setUser={setUser}
   setPass={setPass}
-  funcion={sendUser}
-  funcion2={newUser}
-  />
+  fn={sendUser}
+  fn2={newUser}
+  /> 
+      {/* <Login
+        user={user}
+        pass={pass}
+        setUser={setUser}
+        setPass={setPass}
+        fn={newUser}
+        fn2={sendUser}
+      ></Login> */}
   </>)
 };
 

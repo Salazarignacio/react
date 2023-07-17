@@ -4,7 +4,7 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import NavBar from "./components/NavBar/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./components/Cart/Cart";
-import Login from "./components/Login/Login";
+
 
 
 import CheckoutContainer from "./components/CheckoutContainer/CheckoutContainer";
@@ -21,6 +21,7 @@ function App() {
   return (
     <>
         <BrowserRouter>
+        <LoginContainer>
       <CartContext>
           <NavBar />
           <Routes>
@@ -41,6 +42,7 @@ function App() {
             />
           </Routes>
       </CartContext>
+      </LoginContainer>
         </BrowserRouter>
     </>
   );
