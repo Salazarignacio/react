@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import { baseDatos } from "../../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import SignUp from '../Login/SignUp.jsx'
+import SignUp from '../SignUp/SignUp.jsx'
 
  const SignUpContainer = () => {
   const [user, setUser] = useState("");
@@ -51,4 +51,5 @@ const userRef = collection(baseDatos, "users");
   </>)
 };
 
+/* hacer que evite la posibilidad de crear usuarios duplicados */
 export default SignUpContainer

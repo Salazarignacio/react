@@ -2,8 +2,8 @@ import "./Checkout.css";
 import { useState } from "react";
 
 function Checkout({
-  funcion,
-  funcion2,
+  fn,
+  fn2,
   name,
   phone,
   mail,
@@ -33,13 +33,13 @@ function Checkout({
 
   function validation(e) {
     e.preventDefault();
-    funcion();
+    fn();
   }
 
   return (
     <div className="mh ">
       <h3 className="mb-5">Ingrese sus datos para finalizar la orden <i className="fa-solid fa-cart-shopping"></i></h3>
-      <form className="Checkout" onSubmit={funcion2}>
+      <form className="Checkout" onSubmit={fn2}>
         <label className="mb-2">Nombre y Apellido</label>
         <input
           type="text"

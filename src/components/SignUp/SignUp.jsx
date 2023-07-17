@@ -1,15 +1,16 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import "../Login/Login";
 
-export default function SignUp({user, pass, setUser, setPass, funcion, funcion2}) {
+/* hacer customHook para formularios */
+export default function SignUp({user, pass, setUser, setPass, fn, fn2}) {
+ 
   function handleSubmit(e){
     e.preventDefault();
-    funcion()
+    fn()
   }
   return (
     <div className="mh p-5 login">
-      <form onSubmit={funcion2} className="Checkout " >
+      <h3 className="mb-5">Cree su nombre de usuario y contraseña</h3>
+      <form onSubmit={fn2} className="Checkout " >
         <label className="mb-2">Usuario</label>
         <input
           type="text"
@@ -23,7 +24,7 @@ export default function SignUp({user, pass, setUser, setPass, funcion, funcion2}
           value={pass}
           onChange={(e) => setPass(e.target.value)}
         />
-        <button onClick={handleSubmit} className="btn-modern ">Registrarse</button>
+        <button onClick={()=>handleSubmit(e)} className="btn-modern ">Registrarse</button>
       </form>
     </div>
   );

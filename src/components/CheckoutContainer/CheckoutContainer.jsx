@@ -106,8 +106,8 @@ const CheckoutContainer = () => {
         </div>
       ) : (
         <Checkout
-          funcion={sendOrder}
-          funcion2={createUser}
+          fn={sendOrder}
+          fn2={createUser}
           name={name}
           setName={setName}
           phone={phone}
