@@ -22,7 +22,7 @@ const CheckoutContainer = () => {
   const [orderId, setOrderId] = useState(false);
 
   const themeLogin = useContext(LoginContext);
-  const { user, loged } = themeLogin;
+  const { user, loged, phoneUser, mailUser } = themeLogin;
 
   function createUser() {
     const objUser = {
@@ -54,8 +54,10 @@ const CheckoutContainer = () => {
     };
     if (loged){
       order.buyer.name=user
+      order.buyer.phone=phoneUser
+      order.buyer.email=mailUser
     }
-    console.log(loged, )
+    
 
     try {
       const ids = cart.map((a) => a.id);

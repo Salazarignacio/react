@@ -5,7 +5,7 @@ import { LoginContext } from "../LoginContainer/LoginContainer";
 /* hacer customHook para formularios */
 export default function SignUp() {
   const themeLogin = useContext(LoginContext);
-  const { user, pass, setUser, setPass, sendUser, newUser, loged } = themeLogin;
+  const { user, pass, phoneUser, setPhoneUser, mailUser, setMailUser, setUser, setPass, sendUser, newUser, loged } = themeLogin;
   function handleSubmit(e){
     e.preventDefault();
     sendUser()
@@ -26,6 +26,20 @@ export default function SignUp() {
           className="mb-4"
           value={pass}
           onChange={(e) => setPass(e.target.value)}
+        />
+        <label className="mb-2">Teléfono</label>
+        <input
+          type="number"
+          className="mb-4"
+          value={phoneUser}
+          onChange={(e) => setPhoneUser(e.target.value)}
+        />
+        <label className="mb-2">E-mail</label>
+        <input
+          type="email"
+          className="mb-4"
+          value={mailUser}
+          onChange={(e) => setMailUser(e.target.value)}
         />
         <button onClick={(e)=>handleSubmit(e)} className="btn-modern ">Registrarse</button>
       </form>

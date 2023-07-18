@@ -9,6 +9,8 @@ export const LoginContext = createContext("");
 export default function LoginContainer({ children }) {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
+  const [phoneUser, setPhoneUser] = useState("");
+  const [mailUser, setMailUser] = useState("");
   const [users, setUsers] = useState([]);
   const [userId, setUserId] = useState({});
   const [loged, setLoged] = useState(false);
@@ -68,12 +70,17 @@ console.log(user)
         value={{
           user,
           pass,
+          phoneUser,
+          mailUser,
           setUser,
           setPass,
+          setPhoneUser,
+          setMailUser,
           getUser,
           loged,
           sendUser,
           newUser,
+
         }}
       >
         {children}
