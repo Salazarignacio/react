@@ -1,16 +1,19 @@
 import "../Login/Login";
+import { useContext } from "react";
+import { LoginContext } from "../LoginContainer/LoginContainer";
 
 /* hacer customHook para formularios */
-export default function SignUp({user, pass, setUser, setPass, fn, fn2}) {
- 
+export default function SignUp() {
+  const themeLogin = useContext(LoginContext);
+  const { user, pass, setUser, setPass, sendUser, newUser, loged } = themeLogin;
   function handleSubmit(e){
     e.preventDefault();
-    fn()
+    sendUser()
   }
   return (
     <div className="mh p-5 login">
       <h3 className="mb-5">Cree su nombre de usuario y contraseña</h3>
-      <form onSubmit={fn2} className="Checkout " >
+      <form onSubmit={newUser} className="Checkout " >
         <label className="mb-2">Usuario</label>
         <input
           type="text"

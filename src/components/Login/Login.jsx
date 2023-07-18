@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
 import "./Login.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { LoginContext } from "../LoginContainer/LoginContainer";
 
-
-
-export default function Login({ user, pass, setUser, setPass, fn, fn2}) {
+export default function Login() {
   const [error, setError] = useState(false);
-
+  const themeLogin = useContext(LoginContext);
+  const { user, pass, setUser, setPass, getUser } = themeLogin;
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user.length > 1 && pass.length > 1) {
       setError(false);
-      fn2()
+
+      getUser();
     } else {
       setError(true);
     }
@@ -35,7 +36,7 @@ export default function Login({ user, pass, setUser, setPass, fn, fn2}) {
           onChange={(e) => setPass(e.target.value)}
         />
         <div>
-          <button className="btn-modern m-2 " onClick={(e)=>handleSubmit(e)}>
+          <button className="btn-modern m-2 " onClick={(e) => handleSubmit(e)}>
             Iniciar Sesion
           </button>
           <Link to={"/newuser"}>

@@ -12,6 +12,7 @@ import { ThemeContext } from "../../CartContext/CartContext";
 import Checkout from "../Checkout/Checkout";
 import { baseDatos } from "../../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import { LoginContext } from "../LoginContainer/LoginContainer";
 
 const CheckoutContainer = () => {
   const [name, setName] = useState("");
@@ -19,6 +20,9 @@ const CheckoutContainer = () => {
   const [mail, setMail] = useState("");
   const [mail2, setMail2] = useState("");
   const [orderId, setOrderId] = useState(false);
+
+  const themeLogin = useContext(LoginContext);
+  const { user, loged } = themeLogin;
 
   function createUser() {
     const objUser = {
@@ -48,6 +52,10 @@ const CheckoutContainer = () => {
       estado: "orden generada",
       fecha: new Date(),
     };
+    if (loged){
+      order.buyer.name=user
+    }
+    console.log(loged, )
 
     try {
       const ids = cart.map((a) => a.id);
@@ -82,7 +90,7 @@ const CheckoutContainer = () => {
         const orderRef = collection(baseDatos, "orders");
 
         const { id } = await addDoc(orderRef, order);
-        clearCart(); 
+        clearCart();
         setOrderId(id);
       } else alert("no hay stock suficiente");
     } catch (error) {
@@ -107,7 +115,7 @@ const CheckoutContainer = () => {
       ) : (
         <Checkout
           fn={sendOrder}
-          fn2={createUser}
+          fn2={createUser} /* loged?user:createUser */
           name={name}
           setName={setName}
           phone={phone}

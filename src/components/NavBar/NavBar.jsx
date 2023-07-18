@@ -1,17 +1,17 @@
 import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { LoginContext } from "../LoginContainer/LoginContainer";
 import { useContext } from "react";
 
 export default function NavBar() {
   const themeLogin = useContext(LoginContext)
-  const {user} = themeLogin
-  const {loged} = themeLogin
+  const {user, loged} = themeLogin
+  
   return (
+    <div>
     <header className=" container-fluid bColor">
       <div className="NavBar container-sm ">
-        <div>{loged?<p>Usario: {user}</p>:<button className="btn-modern">Iniciar Sesión</button>}</div>
         <div>
           <NavLink to={"/"}>
             <button type="button" className="btn btn-outline-light">
@@ -47,5 +47,7 @@ export default function NavBar() {
         </div>
       </div>
     </header>
+    {console.log(loged)}
+  {loged?<p> <i className="fa-solid fa-user"></i> {user}</p>:<Link to={"/login"}><button className="btn-modern">Iniciar Sesión</button></Link>}</div>
   );
 }

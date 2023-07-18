@@ -1,23 +1,15 @@
-import {
-  writeBatch,
-  getDocs,
-  addDoc,
-  query,
-  where,
-  collection,
-  documentId,
-} from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
 import { baseDatos } from "../../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import SignUp from '../SignUp/SignUp.jsx'
+import SignUp from "../SignUp/SignUp.jsx";
 
- const SignUpContainer = () => {
+const SignUpContainer = () => {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [userId, setUserId] = useState({});
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function newUser() {
     const objUser = {
@@ -32,32 +24,28 @@ import SignUp from '../SignUp/SignUp.jsx'
       usuario: user,
       password: pass,
     };
-const userRef = collection(baseDatos, "users");
+    const userRef = collection(baseDatos, "users");
 
-   addDoc(userRef, info).then(({id})=>setUserId(id)) /* devuelve el id de la orden  */
+    addDoc(userRef, info).then(({ id }) =>
+      setUserId(id)
+    ); /* devuelve el id de la orden  */
 
-    navigate("/") 
-
+    navigate("/");
   };
-  return (<>
-   <SignUp
-  user={user}
-  pass={pass}
-  setUser={setUser}
-  setPass={setPass}
-  fn={sendUser}
-  fn2={newUser}
-  /> 
-      {/* <Login
+  return (
+    <>
+{/*       <SignUp
         user={user}
         pass={pass}
         setUser={setUser}
         setPass={setPass}
-        fn={newUser}
-        fn2={sendUser}
-      ></Login> */}
-  </>)
+        fn={sendUser}
+        fn2={newUser}
+      /> */}
+
+    </>
+  );
 };
 
 /* hacer que evite la posibilidad de crear usuarios duplicados */
-export default SignUpContainer
+export default SignUpContainer;
