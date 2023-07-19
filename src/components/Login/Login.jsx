@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
 import "./Login.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { LoginContext } from "../LoginContainer/LoginContainer";
 
 export default function Login() {
   const [error, setError] = useState(false);
   const themeLogin = useContext(LoginContext);
-  const { user, pass, setUser, setPass, getUser } = themeLogin;
+  const { user, pass, setUser, setPass, getUser, searchUser } = themeLogin;
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user.length > 1 && pass.length > 1) {
       setError(false);
 
       getUser();
+
     } else {
       setError(true);
     }
@@ -26,7 +27,8 @@ export default function Login() {
         <input
           type="text"
           value={user}
-          onChange={(e) => setUser(e.target.value)}
+          onChange={(e) => setUser(e.target.value) }
+          
         />
         <label className="mb-2">Contraseña</label>
         <input
@@ -34,6 +36,7 @@ export default function Login() {
           className="mb-4"
           value={pass}
           onChange={(e) => setPass(e.target.value)}
+          
         />
         <div>
           <button className="btn-modern m-2 " onClick={(e) => handleSubmit(e)}>

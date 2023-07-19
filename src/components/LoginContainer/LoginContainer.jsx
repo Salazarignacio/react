@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Login/Login";
 import { baseDatos } from "../../firebase/firebaseConfig";
@@ -14,27 +14,32 @@ export default function LoginContainer({ children }) {
   const [users, setUsers] = useState([]);
   const [userId, setUserId] = useState({});
   const [logged, setLogged] = useState(false);
+  const [ready, setReady] = useState(true);
   const navigate = useNavigate();
 
   /* ------------------------------Login---------------------------------- */
 
-  function getUser() {
+  const getUser = async () => {
     const usersRef = collection(baseDatos, "users");
-    getDocs(usersRef).then((qs) => {
-      const map = qs.docs.map((a) => {
-        const fields = a.data();
-        return { ...fields };
-      });
-      setUsers(map);
+
+    const qs = await getDocs(usersRef);
+    const qs1 = await qs;
+    const map = await qs1.docs.map((a) => {
+      const fields = a.data();
+      return { ...fields };
     });
-    console.log(user);
-    const searchUser = users.find((a) => a.usuario == user);
-    /* si esta ok y el boton displnible hacer el search */
-    if (searchUser && searchUser.password == pass) {
+
+    const awaitMap = await map;
+    setUsers(map);
+    setReady(false);
+
+    const searchUser = awaitMap.find((a) => a.usuario == user);
+
+    if (awaitMap && searchUser.password == pass) {
       setLogged(true);
-      navigate("/"); /* push del useParams que dio click */
+      navigate("/");
     } else alert("nombre de usuario o contraseña incorrecto");
-  }
+  };
 
   /* ------------------------------SignUp---------------------------------- */
   function newUser() {
@@ -50,7 +55,7 @@ export default function LoginContainer({ children }) {
       usuario: user,
       password: pass,
       telefono: phoneUser,
-      email: mailUser
+      email: mailUser,
     };
     const userRef = collection(baseDatos, "users");
 
