@@ -19,8 +19,7 @@
 
 .bColor {
   background-color: rgba(0, 0, 0, 0.637);
-  position: sticky;
-  top: 0px;
+
   
 }
 .NavBar {
@@ -44,4 +43,19 @@ a {
   display: flex;
   width: 400px;
   justify-content: space-evenly;
+}
+
+.loginHeader {
+  position: sticky;
+  top: 0px;
+}
+
+.delete2{
+  font-size: 12px;
+  color: red;
+  opacity: 0;
+}
+
+.delete2:hover {
+  opacity: 100;
 }

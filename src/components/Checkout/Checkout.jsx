@@ -111,6 +111,7 @@ function Checkout({
         <div className="divider-right mb-4"></div>
         <div className="divider-center">O</div>
         <div className="divider-left mb-4"></div>
+
         </div>
         <Link to={"/login"}>
           <button className="btn-modern">Iniciar Sesion</button>

@@ -1,6 +1,6 @@
 import "./CartView.css";
 
-function CartView({ id, title, img1, price, quantity, fn, subtotal }) {
+function CartView({ id, title, img1, price, quantity, fn }) {
   return (
     <div key={id} className="container cartview d-flex">
       <div className=" col-md-2">

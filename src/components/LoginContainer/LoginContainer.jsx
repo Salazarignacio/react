@@ -13,7 +13,7 @@ export default function LoginContainer({ children }) {
   const [mailUser, setMailUser] = useState("");
   const [users, setUsers] = useState([]);
   const [userId, setUserId] = useState({});
-  const [loged, setLoged] = useState(false);
+  const [logged, setLogged] = useState(false);
   const navigate = useNavigate();
 
   /* ------------------------------Login---------------------------------- */
@@ -27,14 +27,13 @@ export default function LoginContainer({ children }) {
       });
       setUsers(map);
     });
-console.log(user)
+    console.log(user);
     const searchUser = users.find((a) => a.usuario == user);
-/* searchUser aparece la primera vez como undefined y entra a la segunda */
+    /* searchUser aparece la primera vez como undefined y entra a la segunda */
     if (searchUser && searchUser.password == pass) {
-      setLoged(true);
+      setLogged(true);
       navigate("/"); /* push del useParams que dio click */
-      
-    }  else alert("nombre de usuario o contraseña incorrecto"); 
+    } else alert("nombre de usuario o contraseña incorrecto");
   }
 
   /* ------------------------------SignUp---------------------------------- */
@@ -46,14 +45,12 @@ console.log(user)
     return objUser;
   }
 
-  /*   function logedUser(){
-    const objLoged ={}
-  } */
-
   const sendUser = async () => {
     const info = {
       usuario: user,
       password: pass,
+      telefono: phoneUser,
+      email: mailUser
     };
     const userRef = collection(baseDatos, "users");
 
@@ -77,10 +74,10 @@ console.log(user)
           setPhoneUser,
           setMailUser,
           getUser,
-          loged,
+          logged,
+          setLogged,
           sendUser,
           newUser,
-
         }}
       >
         {children}

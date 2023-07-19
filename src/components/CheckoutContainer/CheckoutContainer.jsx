@@ -13,6 +13,7 @@ import Checkout from "../Checkout/Checkout";
 import { baseDatos } from "../../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../LoginContainer/LoginContainer";
+import CheckouLogged from "../CheckoutLogged/CheckouLogged";
 
 const CheckoutContainer = () => {
   const [name, setName] = useState("");
@@ -22,7 +23,7 @@ const CheckoutContainer = () => {
   const [orderId, setOrderId] = useState(false);
 
   const themeLogin = useContext(LoginContext);
-  const { user, loged, phoneUser, mailUser } = themeLogin;
+  const { user, logged, phoneUser, mailUser } = themeLogin;
 
   function createUser() {
     const objUser = {
@@ -52,7 +53,7 @@ const CheckoutContainer = () => {
       estado: "orden generada",
       fecha: new Date(),
     };
-    if (loged){
+    if (logged){
       order.buyer.name=user
       order.buyer.phone=phoneUser
       order.buyer.email=mailUser
@@ -114,10 +115,10 @@ const CheckoutContainer = () => {
             Volver al menú principal
           </button>
         </div>
-      ) : (
+      ) : ( logged?<CheckouLogged fn={sendOrder} fn2={createUser}/>:
         <Checkout
           fn={sendOrder}
-          fn2={createUser} /* loged?user:createUser */
+          fn2={createUser} 
           name={name}
           setName={setName}
           phone={phone}
