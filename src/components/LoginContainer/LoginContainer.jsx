@@ -29,7 +29,7 @@ export default function LoginContainer({ children }) {
     });
     console.log(user);
     const searchUser = users.find((a) => a.usuario == user);
-    /* searchUser aparece la primera vez como undefined y entra a la segunda */
+    /* si esta ok y el boton displnible hacer el search */
     if (searchUser && searchUser.password == pass) {
       setLogged(true);
       navigate("/"); /* push del useParams que dio click */

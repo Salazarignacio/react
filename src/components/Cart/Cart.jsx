@@ -29,7 +29,7 @@ function Cart() {
         })}
         <h3 style={total<1?{display: "none"}:{display:"block"}}>${total}</h3>
         <div>
-          <button className="btn-modern mb-3" onClick={clearCart}>Vaciar carrito</button>
+          <button className="btn-delete mb-3" onClick={clearCart}>Vaciar carrito <i className="fa-regular fa-trash-can"></i></button>
         </div>
         <Link disabled={total<1} to={"/cart/checkout"}>
           <button className="btn-modern" style={total<1?{display: "none"}:{textDecoration: "none"}}>Confirmar Compra </button>
