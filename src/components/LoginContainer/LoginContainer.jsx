@@ -14,7 +14,7 @@ export default function LoginContainer({ children }) {
   const [users, setUsers] = useState([]);
   const [userId, setUserId] = useState({});
   const [logged, setLogged] = useState(false);
-  const [ready, setReady] = useState(true);
+  const [admin, setAdmin] = useState(false);
   const navigate = useNavigate();
 
   /* ------------------------------Login---------------------------------- */
@@ -31,12 +31,15 @@ export default function LoginContainer({ children }) {
 
     const awaitMap = await map;
     setUsers(map);
-    setReady(false);
 
     const searchUser = awaitMap.find((a) => a.usuario == user);
 
     if (awaitMap && searchUser.password == pass) {
+      if(user=="admin"){
+        setAdmin(true)
+      } else {setAdmin(false)}
       setLogged(true);
+      console.log(searchUser.email);
       navigate("/");
     } else alert("nombre de usuario o contraseña incorrecto");
   };
@@ -54,8 +57,8 @@ export default function LoginContainer({ children }) {
     const info = {
       usuario: user,
       password: pass,
-      telefono: phoneUser,
-      email: mailUser,
+       telefono: phoneUser,
+      email: mailUser, 
     };
     const userRef = collection(baseDatos, "users");
 
@@ -83,6 +86,8 @@ export default function LoginContainer({ children }) {
           setLogged,
           sendUser,
           newUser,
+          admin,
+          setAdmin
         }}
       >
         {children}

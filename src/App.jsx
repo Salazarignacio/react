@@ -7,7 +7,7 @@ import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
 
 import CheckoutContainer from "./components/CheckoutContainer/CheckoutContainer";
-
+import UploadContainer from "./components/UploadContainer/UploadContainer";
 import CartContext from "./CartContext/CartContext";
 import SignUpContainer from "./components/SignUpContainer/SignUpContainer";
 import LoginContainer from "./components/LoginContainer/LoginContainer";
@@ -24,6 +24,7 @@ function App() {
       <CartContext>
           <NavBar />
           <Routes>
+            <Route exact path="/upload" element={<UploadContainer/>}/>
             <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/newuser" element={<SignUp/>}/>
             <Route exact path="/" element={<ItemListContainer />} />

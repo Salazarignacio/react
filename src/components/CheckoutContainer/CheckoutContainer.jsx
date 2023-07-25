@@ -14,6 +14,7 @@ import { baseDatos } from "../../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../LoginContainer/LoginContainer";
 import CheckouLogged from "../CheckoutLogged/CheckouLogged";
+import Loading from '../Loading/Loading'
 
 const CheckoutContainer = () => {
   const [name, setName] = useState("");
@@ -21,6 +22,7 @@ const CheckoutContainer = () => {
   const [mail, setMail] = useState("");
   const [mail2, setMail2] = useState("");
   const [orderId, setOrderId] = useState(false);
+  
 
   const themeLogin = useContext(LoginContext);
   const { user, logged, phoneUser, mailUser } = themeLogin;
@@ -42,6 +44,7 @@ const CheckoutContainer = () => {
 
   const navigate = useNavigate();
   const sendOrder = async () => {
+
     const order = {
       buyer: {
         name: name,
@@ -59,8 +62,11 @@ const CheckoutContainer = () => {
       order.buyer.email=mailUser
     }
     
-
+    
     try {
+      
+      
+      
       const ids = cart.map((a) => a.id);
 
       const productsRef = query(
@@ -98,11 +104,12 @@ const CheckoutContainer = () => {
       } else alert("no hay stock suficiente");
     } catch (error) {
       console.error(error);
-    }
+    } 
   };
 
   return (
     <>
+    
       {orderId ? (
         <div className="mh">
           <h3>Su orden de pédido es {orderId}</h3>

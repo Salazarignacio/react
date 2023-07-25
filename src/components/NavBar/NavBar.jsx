@@ -3,10 +3,11 @@ import "./NavBar.css";
 import { NavLink, Link } from "react-router-dom";
 import { LoginContext } from "../LoginContainer/LoginContainer";
 import { useContext } from "react";
+import UploadContainer from "../UploadContainer/UploadContainer";
 
 export default function NavBar() {
   const themeLogin = useContext(LoginContext);
-  const { user, logged, setLogged } = themeLogin;
+  const { user, logged, setLogged, admin, setAdmin } = themeLogin;
 
   return (
     <div className="loginHeader">
@@ -38,23 +39,39 @@ export default function NavBar() {
           </div>
           <div>
             <NavLink to={"cart"}>
+              
               <CartWidget />
             </NavLink>
           </div>
+          
         </div>
       </header>
-
+      
       {logged ? (
         <div className="m-3">
-          <i className="fa-solid fa-user"></i> {user} <button onClick={() => setLogged(false)} className="btn-delete delete2">
-          <i className="fa-solid fa-xmark"></i>
-        </button>
+          <i className="fa-solid fa-user"></i> {user}{" "}
+          <button
+            onClick={() => {setLogged(false); setAdmin(false)}}
+            className="btn-delete delete2"
+          >
+            <i className="fa-solid fa-xmark"></i>
+          </button>
         </div>
       ) : (
         <Link to={"/login"}>
           <button className="btn-modern m-3">Iniciar Sesión</button>
         </Link>
       )}
+      <div className="m-3">
+       { admin && (
+            <NavLink to={"upload"}>
+              <button type="button" className="btn btn-outline-dark">
+                <i className="icon fa-solid fa-plus"></i>
+              </button>
+            </NavLink>
+          ) }
+          {console.log(admin)} 
+          </div>
     </div>
   );
 }
