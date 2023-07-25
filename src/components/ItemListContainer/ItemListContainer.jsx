@@ -5,6 +5,7 @@ import { getDocs, collection, query, where } from "firebase/firestore";
 import { baseDatos } from "../../firebase/firebaseConfig";
 import Loading from "../Loading/Loading";
 
+
 function ItemListContainer() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -37,7 +38,7 @@ function ItemListContainer() {
   return (
     <div className="mh">
       {loading && <Loading />}
-
+      
       <ItemList data={products}></ItemList>
     </div>
   );

@@ -11,6 +11,7 @@ import UploadContainer from "./components/UploadContainer/UploadContainer";
 import CartContext from "./CartContext/CartContext";
 import SignUpContainer from "./components/SignUpContainer/SignUpContainer";
 import LoginContainer from "./components/LoginContainer/LoginContainer";
+import SearchProductContainer from "./components/SearchProductContainer/SearchProductContainer";
 
 
 function App() {
@@ -24,10 +25,11 @@ function App() {
       <CartContext>
           <NavBar />
           <Routes>
+            <Route exact path="/search" element={<SearchProductContainer/>}/>
             <Route exact path="/upload" element={<UploadContainer/>}/>
             <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/newuser" element={<SignUp/>}/>
-            <Route exact path="/" element={<ItemListContainer />} />
+            <Route exact path="/" element={<ItemListContainer />} />{/* ojo aca que hicimos cambios */}
             <Route exact path="/cart" element={<Cart />} />
             <Route exact path="category/:userCategory" element={<ItemListContainer />} />
             <Route

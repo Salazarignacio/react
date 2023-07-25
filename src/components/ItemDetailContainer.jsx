@@ -12,11 +12,7 @@ export default function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
 
   const { userId } = useParams();
-const notFound=()=>{
-  setTimeout(()=>{
-    return(<h1>No se encuentra el producto</h1>)
-  },2000)
-}
+
   useEffect(() => {
     const productRef = doc(baseDatos, "baseDatos", userId);
     setLoading(true);
