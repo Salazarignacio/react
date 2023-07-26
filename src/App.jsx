@@ -29,7 +29,7 @@ function App() {
             <Route exact path="/upload" element={<UploadContainer/>}/>
             <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/newuser" element={<SignUp/>}/>
-            <Route exact path="/" element={<ItemListContainer />} />{/* ojo aca que hicimos cambios */}
+            <Route exact path="/" element={<ItemListContainer />} />
             <Route exact path="/cart" element={<Cart />} />
             <Route exact path="category/:userCategory" element={<ItemListContainer />} />
             <Route

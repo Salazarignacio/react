@@ -36,6 +36,12 @@ export default function NavBar() {
                 <i className="icon fa-regular fa-clock"></i>
               </button>
             </NavLink>
+            <NavLink to={"search"}>
+              
+              <button type="button" className="btn btn-outline-light">
+                <i className="icon fa-solid fa-magnifying-glass"></i>
+              </button>
+            </NavLink>
           </div>
           <div>
             <NavLink to={"cart"}>
