@@ -5,6 +5,7 @@ export const ThemeContext = createContext("");
 function CartContext({ children }) {
   const [cart, setCart] = useState([]);
   const [state, setState] = useState(true);
+  const [fav, setFav] = useState([]);
 
   /* ---------------------------------------------------------------------------------- */
   const getTotalQuantity = () => {
@@ -60,10 +61,20 @@ function CartContext({ children }) {
   const isInCart = (id) => {
     return cart.some((a) => a.id === id);
   };
+
+
   return (
     <>
       <ThemeContext.Provider
-        value={[cart, addItem, isInCart, totalQuantity, total, del, clearCart]}
+        value={[
+          cart,
+          addItem,
+          isInCart,
+          totalQuantity,
+          total,
+          del,
+          clearCart
+        ]}
       >
         {children}
       </ThemeContext.Provider>

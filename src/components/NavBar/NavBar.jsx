@@ -36,8 +36,12 @@ export default function NavBar() {
                 <i className="icon fa-regular fa-clock"></i>
               </button>
             </NavLink>
+            <NavLink to={"favs"}>
+              <button type="button" className="btn btn-outline-light">
+                <i className="icon fa-regular fa-heart"></i>
+              </button>
+            </NavLink>
             <NavLink to={"search"}>
-              
               <button type="button" className="btn btn-outline-light">
                 <i className="icon fa-solid fa-magnifying-glass"></i>
               </button>
@@ -45,19 +49,20 @@ export default function NavBar() {
           </div>
           <div>
             <NavLink to={"cart"}>
-              
               <CartWidget />
             </NavLink>
           </div>
-          
         </div>
       </header>
-      
+
       {logged ? (
         <div className="m-3">
           <i className="fa-solid fa-user"></i> {user}{" "}
           <button
-            onClick={() => {setLogged(false); setAdmin(false)}}
+            onClick={() => {
+              setLogged(false);
+              setAdmin(false);
+            }}
             className="btn-delete delete2"
           >
             <i className="fa-solid fa-xmark"></i>
@@ -69,15 +74,14 @@ export default function NavBar() {
         </Link>
       )}
       <div className="m-3">
-       { admin && (
-            <NavLink to={"upload"}>
-              <button type="button" className="btn btn-outline-dark">
-                <i className="icon fa-solid fa-plus"></i>
-              </button>
-            </NavLink>
-          ) }
-          {console.log(admin)} 
-          </div>
+        {admin && (
+          <NavLink to={"upload"}>
+            <button type="button" className="btn btn-outline-dark">
+              <i className="icon fa-solid fa-plus"></i>
+            </button>
+          </NavLink>
+        )}
+      </div>
     </div>
   );
 }

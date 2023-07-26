@@ -4,25 +4,26 @@ import { baseDatos } from "../../firebase/firebaseConfig";
 import { getDocs, collection } from "firebase/firestore";
 import Loading from "../Loading/Loading";
 import Item from "../Item/Item";
+import SearchProducts from "../SearchProducts/SearchProducts";
 
-export default function SearchProductContainer() {
+export default function SearchProductsContainer() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [render, setRender] = useState("");
 
   useEffect(() => {
-    const productRef = collection(baseDatos, "baseDatos");
+    const productsRef = collection(baseDatos, "baseDatos");
 
-    getDocs(productRef).then((snapChat) => {
+    getDocs(productsRef).then((snapChat) => {
       setProducts(snapChat.docs.map((a) => ({ id: a.id, ...a.data() })));
     });
   }, [search]);
 
-  const searching = (e) => {
+ /* const searching = (e) => {
     e.preventDefault();
-    const rta = products.filter((a) => a.title.includes(search.toUpperCase()));
-    rta?
-    setRender(
+     const rta = products.filter((a) => a.title.includes(search.toUpperCase())); */
+    
+/*     setRender(
       rta.map((a) => {
         return (
           <Item
@@ -34,11 +35,19 @@ export default function SearchProductContainer() {
           ></Item>
         );
       })
-    ):setRender("");
-  };
+    ) 
+  };*/
   return (
     <>
-      <form className="Checkout" onSubmit={(e) => searching(e)}>
+    <SearchProducts
+    products={products}
+    search={search}
+    setSearch={setSearch}
+    
+    render={render}
+    setRender={setRender}
+    />
+{/*       <form className="Checkout" onSubmit={(e) => searching(e)}>
         <h3 className="mb-5">Busque el nombre de su producto</h3>
         <input
           type="text"
@@ -50,7 +59,7 @@ export default function SearchProductContainer() {
         />
         <button className="btn-modern mb-5">Buscar</button>
       </form>
-      {render}
+      {render} */}
     </>
   );
 }

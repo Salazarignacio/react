@@ -8,7 +8,7 @@ import {
   documentId,
 } from "firebase/firestore";
 import { useState, useContext } from "react";
-import { ThemeContext } from "../../CartContext/CartContext";
+import { ThemeContext } from "../../Context/CartContext";
 import Checkout from "../Checkout/Checkout";
 import { baseDatos } from "../../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";

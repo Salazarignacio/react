@@ -54,7 +54,7 @@ function ItemCount({ price, stock, onAdd, quantity }) {
           type="button"
           className="btn-modern "
           onClick={()=>onAdd(count)} 
-          disabled={stock2=="Producto sin stock"}
+          disabled={stock2=="Producto sin stock"||count=="-"}
         >
           Agregar al Carrito
         </button>

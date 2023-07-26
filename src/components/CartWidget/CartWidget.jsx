@@ -1,5 +1,5 @@
 import "./CartWidget.css";
-import { ThemeContext } from "../../CartContext/CartContext";
+import { ThemeContext } from "../../Context/CartContext";
 import { useContext } from "react";
 
 function CartWidget() {

@@ -5,13 +5,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./components/Cart/Cart";
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
-
+import FavContext from "./Context/FavContext";
 import CheckoutContainer from "./components/CheckoutContainer/CheckoutContainer";
 import UploadContainer from "./components/UploadContainer/UploadContainer";
-import CartContext from "./CartContext/CartContext";
-import SignUpContainer from "./components/SignUpContainer/SignUpContainer";
+import CartContext from "./Context/CartContext";
 import LoginContainer from "./components/LoginContainer/LoginContainer";
-import SearchProductContainer from "./components/SearchProductContainer/SearchProductContainer";
+import SearchProductsContainer from "./components/SearchProductsContainer/SearchProductsContainer";
 
 
 function App() {
@@ -23,9 +22,10 @@ function App() {
         <BrowserRouter>
         <LoginContainer>
       <CartContext>
+        <FavContext>
           <NavBar />
           <Routes>
-            <Route exact path="/search" element={<SearchProductContainer/>}/>
+            <Route exact path="/search" element={<SearchProductsContainer/>}/>
             <Route exact path="/upload" element={<UploadContainer/>}/>
             <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/newuser" element={<SignUp/>}/>
@@ -43,6 +43,7 @@ function App() {
               element={<ItemDetailContainer />}
             />
           </Routes>
+          </FavContext>
       </CartContext>
       </LoginContainer>
         </BrowserRouter>

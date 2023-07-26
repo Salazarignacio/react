@@ -2,9 +2,13 @@ import "./ItemDetail.css";
 import ItemCount from "../counter/ItemCount";
 import Finalizada from "./Finalizada";
 import { useState, createContext } from "react";
-import { ThemeContext } from "../../CartContext/CartContext";
 import { useContext } from "react";
 import Carousel from "./Carousel";
+import { ThemeContext } from "../../Context/CartContext";
+import { ThemeContextFav } from "../../Context/FavContext";
+
+
+
 
 export const ImgContext = createContext("imagenes");
 
@@ -19,7 +23,9 @@ export default function ItemDetail({
   stock,
 }) {
   const theme = useContext(ThemeContext);
+  const themeFav = useContext(ThemeContextFav);
   const objImg = { img1, img2, img3 };
+  const {addFav} = themeFav
 
   const handleOnAdd = (quantity) => {
     const objProduct = {
@@ -33,6 +39,20 @@ export default function ItemDetail({
 
     addItem(objProduct);
     changeComponent();
+  };
+
+  const handleOnFav = () => {
+    const objProduct = 
+      {
+        id,
+        title,
+        price,
+        stock,
+        img1,
+      }
+    
+    addFav(objProduct);
+
   };
 
   const [, addItem] = theme;
@@ -49,6 +69,9 @@ export default function ItemDetail({
   return (
     <div key={id} className="ItemDetail p-5">
       <div className="detailLeft ">
+        <div>
+        <i onClick={ handleOnFav} className="icon fa-regular fa-heart"></i>
+        </div>
         <ImgContext.Provider value={objImg}>
           <Carousel />
         </ImgContext.Provider>
