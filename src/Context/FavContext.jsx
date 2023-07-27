@@ -3,9 +3,8 @@ import { useState, createContext } from "react";
 export const ThemeContextFav = createContext("");
 
 function FavContext({ children }) {
-
   const [fav, setFav] = useState([]);
-
+  const [stateFav, setStateFav] = useState(true);
 
   /* ------------------------favoritos ------------------------ */
   const isInFav = (id) => {
@@ -13,12 +12,21 @@ function FavContext({ children }) {
   };
   function addFav(prod) {
     if (!isInFav(prod.id)) {
-      setFav((prev) => {return[...prev, prod]});
-      console.log("if");
-    };
-    
-    console.log(fav);
+      setFav((prev) => {
+        return [...prev, prod];
+      });
+
+      setStateFav(!stateFav);
+    } else {
+      del(prod.id);
+    }
   }
+
+  const del = (id) => {
+    let busqueda = fav.map((el) => el.id).indexOf(id);
+    fav.splice(busqueda, 1);
+    setStateFav(!stateFav);
+  };
 
   return (
     <>

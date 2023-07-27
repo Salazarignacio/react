@@ -6,11 +6,12 @@
 
 #root {
   background-color: rgb(230, 230, 230) ;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .active button {
   background-color: white;
+  z-index: 100;
 }
 
 .active i {
@@ -19,7 +20,7 @@
 
 .bColor {
   background-color: rgba(0, 0, 0, 0.637);
-
+  z-index: 100;
   
 }
 .NavBar {
@@ -28,6 +29,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  z-index: 100;
 }
 
 img {
@@ -43,6 +45,7 @@ a {
   display: flex;
   width: 400px;
   justify-content: space-evenly;
+  z-index: 100;
 }
 
 .loginHeader {

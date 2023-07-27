@@ -11,7 +11,7 @@ import UploadContainer from "./components/UploadContainer/UploadContainer";
 import CartContext from "./Context/CartContext";
 import LoginContainer from "./components/LoginContainer/LoginContainer";
 import SearchProductsContainer from "./components/SearchProductsContainer/SearchProductsContainer";
-
+import FavContainer from "./components/FavContainer/FavContainer";
 
 function App() {
 
@@ -25,6 +25,7 @@ function App() {
         <FavContext>
           <NavBar />
           <Routes>
+            <Route exact path="/favs" element={<FavContainer/>}/>
             <Route exact path="/search" element={<SearchProductsContainer/>}/>
             <Route exact path="/upload" element={<UploadContainer/>}/>
             <Route exact path="/login" element={<Login/>}/>
