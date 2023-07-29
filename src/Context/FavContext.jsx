@@ -7,6 +7,11 @@ function FavContext({ children }) {
   const [stateFav, setStateFav] = useState(true);
 
   /* ------------------------favoritos ------------------------ */
+
+  const arrayToJSON = (clave, valor) => {
+    localStorage.setItem(clave, JSON.stringify(valor));
+  };
+
   const isInFav = (id) => {
     return fav.some((a) => a.id === id);
   };
@@ -20,6 +25,16 @@ function FavContext({ children }) {
     } else {
       del(prod.id);
     }
+
+    fav.map((a) => {
+      return (
+        
+          
+          arrayToJSON("id", a.id)
+      
+/* lo puedo dejar aca y ver como lo consumo */
+      )
+    });
   }
 
   const del = (id) => {
@@ -35,7 +50,7 @@ function FavContext({ children }) {
           addFav,
           isInFav,
           fav,
-          del
+          del,
         }}
       >
         {children}

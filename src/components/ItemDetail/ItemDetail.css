@@ -29,8 +29,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  gap: 10px
+  justify-content: center;
+  gap: 10px;
+  width: 280px
 }
 .detailLeft img {
   height: 280px;
@@ -39,8 +40,8 @@
 }
 
 .detailRight {
-  /* background-color: rgb(179, 179, 179); */
-  height: 100%;
+  
+
   margin: 0 auto;
   display: flex;
   flex-direction: column;
