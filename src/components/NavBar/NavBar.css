@@ -6,7 +6,7 @@
 
 #root {
   background-color: rgb(230, 230, 230) ;
-  min-height: 80vh;
+  
 }
 
 .active button {
@@ -19,8 +19,8 @@
 }
 
 .bColor {
-  background-color: rgba(0, 0, 0, 0.637);
-  z-index: 100;
+  background-color:rgba(130, 202, 25, 0.733);
+  z-index: 3;
   
 }
 .NavBar {
@@ -55,7 +55,7 @@ a {
 
 .delete2{
   font-size: 12px;
-  color: red;
+  color: rgb(238, 56, 56);
   opacity: 0;
 }
 

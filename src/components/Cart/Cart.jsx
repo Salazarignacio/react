@@ -11,7 +11,7 @@ function Cart() {
   const [,,,,,,clearCart] = theme;
   return (
     <div>
-      {cart.length < 1 && <h1 className="mh"> <i className="fa-solid fa-cart-shopping"></i>El carrito esta vacío </h1>}
+      {cart.length < 1 ? <h1 className="mh"> <i className="fa-solid fa-cart-shopping"></i>El carrito esta vacío </h1>:
       
       <div className="mh">
         {cart.map((a) => {
@@ -29,12 +29,12 @@ function Cart() {
         })}
         <h3 style={total<1?{display: "none"}:{display:"block"}}>${total}</h3>
         <div>
-          <button className="btn-delete mb-3" onClick={clearCart}>Vaciar carrito <i className="fa-regular fa-trash-can"></i></button>
+          <button className="btn-delete mb-3" style={total<1?{display: "none"}:{textDecoration: "none"}} onClick={clearCart}>Vaciar carrito <i className="fa-regular fa-trash-can"></i></button>
         </div>
         <Link disabled={total<1} to={"/cart/checkout"}>
           <button className="btn-modern" style={total<1?{display: "none"}:{textDecoration: "none"}}>Confirmar Compra </button>
         </Link>
-      </div>
+      </div>}
     </div>
   );
 }

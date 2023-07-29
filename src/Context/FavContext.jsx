@@ -35,6 +35,7 @@ function FavContext({ children }) {
           addFav,
           isInFav,
           fav,
+          del
         }}
       >
         {children}

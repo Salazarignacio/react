@@ -29,6 +29,7 @@ export default function ItemDetailContainer() {
       {loading && <Loading />}
       {product.id && !product.title?<h1 className="mh">No se encontro el producto</h1>:<div className="mh">
         <ItemDetail
+        key={product.id}
           title={product.title}
           img1={
             product.img

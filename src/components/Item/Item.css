@@ -29,7 +29,7 @@
 
 .btn-modern:hover {
     
-    background-color: rgb(215, 255, 0);
+    background-color: rgb(160, 69, 212);
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
@@ -39,14 +39,14 @@
     font-size: .9rem;
     border: solid 1px transparent;
     border-radius: 40px;
-    color: red;
+    color: rgb(238, 56, 56);
     transition: all 0.2s ease;
     
 }
 
 .btn-delete:hover {
     
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(238, 56, 56);
     color: rgb(255, 255, 255);
     font-weight: bold;
 }

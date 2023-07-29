@@ -22,7 +22,7 @@ export default function ItemDetail({
   const theme = useContext(ThemeContext);
   const themeFav = useContext(ThemeContextFav);
   const objImg = { img1, img2, img3 };
-  const { addFav, stateFav, fav } = themeFav;
+  const { addFav, del, fav } = themeFav;
 
   const handleOnAdd = (quantity) => {
     const objProduct = {
@@ -35,6 +35,7 @@ export default function ItemDetail({
     };
 
     addItem(objProduct);
+    del(id)
     changeComponent();
   };
 
@@ -61,16 +62,30 @@ export default function ItemDetail({
     return par;
   }
   const Count = change ? ItemCount : Finalizada;
+  const buscar = (id) => {
+    let isInFavs = fav.find((el) => el.id == id);
 
-  /* let isInFavs = fav.map((el) => el.id == id); */
-
+    return isInFavs;
+  };
   return (
     <div key={id} className="ItemDetail p-5">
       <div className="detailLeft ">
         <div>
-          {/* <i onClick={ handleOnFav} className={"icon fa-regular fa-heart"}></i> */}
+
         </div>
-          <i onClick={handleOnFav} className={"icon fav fa-solid fa-heart"}></i>
+        <div className="favoritos">
+          {buscar(id) ? (
+            <i
+              onClick={handleOnFav}
+              className={"icon fav fa-solid fa-heart"}
+            ></i>
+          ) : (
+            <i
+              onClick={handleOnFav}
+              className={"icon fav fa-regular fa-heart"}
+            ></i>
+          )}
+        </div>
         <ImgContext.Provider value={objImg}>
           <Carousel />
         </ImgContext.Provider>

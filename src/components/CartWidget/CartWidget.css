@@ -1,11 +1,11 @@
 .cartCant {
     position:  absolute;
     top: 34px;
-    right: 135px;
-    padding: 0px 3px 0px 3px;
-    background-color: red;
-    border: solid 2px red;
-    border-radius: 4px;
+    right: 105px;
+    padding: 0px 8px 0px 8px;
+    background-color: rgb(238, 56, 56);
+    border: solid 2px rgb(238, 56, 56);
+    border-radius: 64px;
     color: white;
     font-weight: 600;
 }

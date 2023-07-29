@@ -3,11 +3,13 @@ import "./NavBar.css";
 import { NavLink, Link } from "react-router-dom";
 import { LoginContext } from "../LoginContainer/LoginContainer";
 import { useContext } from "react";
-import UploadContainer from "../UploadContainer/UploadContainer";
+import { ThemeContextFav } from "../../Context/FavContext";
 
 export default function NavBar() {
   const themeLogin = useContext(LoginContext);
+  const themeContextFav = useContext(ThemeContextFav);
   const { user, logged, setLogged, admin, setAdmin } = themeLogin;
+  const {fav } = themeContextFav
 
   return (
     <div className="loginHeader">
@@ -38,7 +40,9 @@ export default function NavBar() {
             </NavLink>
             <NavLink to={"favs"}>
               <button type="button" className="btn btn-outline-light">
-                <i className="icon fa-regular fa-heart"></i>
+              {fav.length>0?
+                <i className="icon fa-solid fa-heart"></i>:
+                <i className="icon fa-regular fa-heart"></i>}
               </button>
             </NavLink>
             <NavLink to={"search"}>
